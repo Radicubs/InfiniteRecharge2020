@@ -19,9 +19,8 @@ public ArcadeDrive() {
 
     @Override
     protected void execute() {
-
-
-
+        double xAxisRaw = Robot.oi.controller.getRawAxis(RobotMap.LEFT_X_AXIS);
+        double yAxisRaw = Robot.oi.controller.getRawAxis(RobotMap.LEFT_Y_AXIS);
 
 }
 

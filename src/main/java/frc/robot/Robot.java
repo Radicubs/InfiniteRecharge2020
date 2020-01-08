@@ -28,10 +28,8 @@ public class Robot extends TimedRobot {
   // Declare subsystems
   public static DriveBase driveBase;
 
-  /**
-   * This function is run when the robot is first started up and should be used
-   * for any initialization code.
-   */
+  public static OI oi;
+
   @Override
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -40,6 +38,7 @@ public class Robot extends TimedRobot {
 
     // Initialize subsystems
     driveBase = new DriveBase();
+    oi = new OI();
 
   }
 
