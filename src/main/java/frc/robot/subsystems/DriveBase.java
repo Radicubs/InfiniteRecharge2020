@@ -2,14 +2,14 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.Holonomic;
 
 public class DriveBase extends Subsystem {
 
   // Have to initialize motors here
 
-  public DriveBase() { //constructor
-    //Assign motors based off of RobotMap
+  public DriveBase() { // constructor
+    // Assign motors based off of RobotMap
   }
 
   public void drive(double leftSpeed, double rightSpeed) {
@@ -17,6 +17,6 @@ public class DriveBase extends Subsystem {
   }
 
   public void initDefaultCommand() {
-    setDefaultCommand(new ArcadeDrive());
+    setDefaultCommand(new Holonomic());
   }
 }
