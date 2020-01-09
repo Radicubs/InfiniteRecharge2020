@@ -23,4 +23,5 @@ public class RobotMap{
     public static final int CLICK_LEFT_JOYSTICK = 9;
     public static final int CLICK_RIGHT_JOYSTICK = 10;
 
+    
 }
