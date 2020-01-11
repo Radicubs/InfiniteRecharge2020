@@ -53,12 +53,12 @@ public class Holonomic extends Command
     protected void execute()
     {
         // Might make cubic in future
-        double xRawAxis = Robot.oi.getRawAxis(RobotMap.LEFT_X_AXIS);
-        double yRawAxis = Robot.oi.getRawAxis(RobotMap.LEFT_Y_AXIS);
-        double rRawAxis = Robot.oi.getRawAxis(RobotMap.RIGHT_X_AXIS);
+        double xRawAxis = Robot.oi.controller.getRawAxis(RobotMap.LEFT_X_AXIS);
+        double yRawAxis = Robot.oi.controller.getRawAxis(RobotMap.LEFT_Y_AXIS);
+        double rRawAxis = Robot.oi.controller.getRawAxis(RobotMap.RIGHT_X_AXIS);
 
         double[] strafeForwardVec = {1., 1., -1., -1.}; // TOP LEFT, TOP RIGHT, BOTTOM LEFT, BOTTOM RIGHT
-        double[] strafeLeftVec = {1., -1., 1, -1.};
+        double[] strafeRightVec = {1., -1., 1, -1.};
         double[] rotateClockwiseVec = {1., -1., -1., 1.};
 
         double[] strafeControl = vecAdd(scalMult(xRawAxis, strafeRightVec), scalMult(yRawAxis, strafeForwardVec));
