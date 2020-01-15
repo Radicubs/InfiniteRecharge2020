@@ -7,7 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveBase;
@@ -27,6 +29,7 @@ public class Robot extends TimedRobot {
 
   // Declare subsystems
   public static DriveBase driveBase;
+  I2C arduino = new I2C(Port.kOnboard, 4);
 
   public static OI oi;
 
@@ -35,6 +38,19 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    
+
+    String WriteString = "go";
+    // Turn the string into a character array
+    char[] CharArray = WriteString.toCharArray();
+    // Make each character a single byte
+    byte[] WriteData = new byte[CharArray.length];
+    // For each item in the character array, add it as a single byte to the I2C connection
+    for (int i = 0; i < CharArray.length; i++) {
+      WriteData[i] = (byte) CharArray[i];
+    }
+    // Send the data to the I2C connection
+    arduino.transaction(WriteData, WriteData.length, null, 0);
 
     // Initialize subsystems
     driveBase = new DriveBase();
@@ -95,6 +111,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
   }
 
   /**
