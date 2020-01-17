@@ -1,3 +1,5 @@
+package frc.robot;
+
 public class PID
 {
     private double Kp;
@@ -24,7 +26,7 @@ public class PID
         return Kp * error + Ki * refreshRate * sum; // +  Kd * derivateEstim
     }
 
-    public double clearCache()
+    public void clearCache()
     {
         sum = 0;
         num = 0;
