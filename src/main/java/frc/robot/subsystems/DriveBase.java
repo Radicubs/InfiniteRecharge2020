@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -31,7 +32,22 @@ public class DriveBase extends Subsystem {
   }
 
   public void drive(double leftSpeed, double rightSpeed) {
-    // set motors to these values
+    rightMotorMain.set(ControlMode.PercentOutput, rightSpeed);
+    leftMotorMain.set(ControlMode.PercentOutput, leftSpeed);
+
+    leftMotorMain.configFactoryDefault();
+        leftMotorTwo.configFactoryDefault();
+        leftMotorThree.configFactoryDefault();
+        rightMotorMain.configFactoryDefault();
+        rightMotorTwo.configFactoryDefault();
+        rightMotorThree.configFactoryDefault();
+
+
+    rightMotorTwo.follow(rightMotorMain);
+    rightMotorThree.follow(rightMotorMain);
+
+    leftMotorTwo.follow(leftMotorMain);
+    leftMotorThree.follow(leftMotorMain);
   }
 
   public void initDefaultCommand() {
