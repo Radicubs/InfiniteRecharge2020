@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Limelight;;
 
 /**
  * The VM is configuRobotd to automatically run this class, and to call the
@@ -27,7 +28,7 @@ public class Robot extends TimedRobot {
 
   // Declare subsystems
   public static DriveBase driveBase;
-
+  public static Limelight limeLight;
   public static OI oi;
 
   @Override
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
 
     // Initialize subsystems
+    limeLight = new Limelight();
     driveBase = new DriveBase();
     oi = new OI();
 
