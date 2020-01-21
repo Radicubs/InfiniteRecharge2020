@@ -49,6 +49,7 @@
 
 # Package Files #
 *.jar
+!.vscode/vs-formatter/*.jar
 *.war
 *.nar
 *.ear

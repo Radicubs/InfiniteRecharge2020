@@ -180,4 +180,10 @@ APP_ARGS=`save "$@"`
 # Collect all arguments for the java command, following the shell quoting and substitution rules
 eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
 
+java -jar ./.vscode/vs-formatter/vs-format.jar --replace ./src/main/java/frc/robot/*
+java -jar ./.vscode/vs-formatter/vs-format.jar --replace ./src/main/java/frc/robot/subsystems/*
+java -jar ./.vscode/vs-formatter/vs-format.jar --replace ./src/main/java/frc/robot/commands/*
+
+
+
 exec "$JAVACMD" "$@"
