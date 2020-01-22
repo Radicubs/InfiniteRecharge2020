@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.Limelight;
 
 public class UpdateLimelight extends Command {
     public UpdateLimelight() {
@@ -18,8 +17,8 @@ public class UpdateLimelight extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        // frc.robot.subsystems.Limelight.getInstance().setLimelightData();
-        // frc.robot.subsystems.Limelight.getInstance().getLimelightData();
+        frc.robot.subsystems.Limelight.getInstance().setValues();
+        frc.robot.subsystems.Limelight.getInstance().readValues();
     }
 
     // Make this return true when this Command no longer needs to run execute()

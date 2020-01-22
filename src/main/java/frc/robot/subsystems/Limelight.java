@@ -4,22 +4,41 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.UpdateLimelight;
 
 public class Limelight extends Subsystem {
 
+  // States of Limelight
   double ledState;
   double cameraState;
+  String ledStateWord;
+  String cameraStateWord;
+  double pipelineNumber;
+
+  // Network Table
   NetworkTable table;
+
+  // Network Table Entries
   NetworkTableEntry tx;
   NetworkTableEntry ty;
   NetworkTableEntry ta;
   NetworkTableEntry ts;
+  NetworkTableEntry ledMode;
+  NetworkTableEntry pipeline;
+  NetworkTableEntry camMode;
+
+  // Values we can get from Limelight
   double horizonatalOffset;
   double verticalOffset;
   double targetArea;
   double skewAmount;
+
+  // Check Connection
   boolean limeLightConnected;
+
+  // Instance of limelight
+  private static Limelight limelightInstance;
 
   public Limelight() {
     // Instantiate Network Table + Entries
@@ -28,6 +47,9 @@ public class Limelight extends Subsystem {
     ty = table.getEntry("ty");
     ta = table.getEntry("ta");
     ts = table.getEntry("ts");
+    ledMode = table.getEntry("ledMode");
+    pipeline = table.getEntry("pipeline");
+    camMode = table.getEntry("camMode");
 
     // Check Limelight Connection
     checkConnection();
@@ -42,61 +64,97 @@ public class Limelight extends Subsystem {
     targetArea = ta.getDouble(0.0);
 
     // Sets LED on at startup
-    setLedOn();
+    ledState = ledMode.getDouble(3.0);
+    ledStateWord = "ON";
 
     // Vision Mode on startup
-    visionMode();
+    cameraState = camMode.getDouble(0.0);
 
+    // Establish Pipeline
+    pipelineNumber = pipeline.getDouble(0.0);
   }
 
-  // Used to Check Connection w/Limelight - We can output this to SmartDashboard once we start working on that
-  private void checkConnection() {
+  public static Limelight getInstance() {
+
+    if (limelightInstance == null) {
+      limelightInstance = new Limelight();
+    }
+    return limelightInstance;
+  }
+
+  // Update Limelight values in UpdateLimelight.java
+  public void setValues() {
+    ledMode.setNumber(ledState);
+    pipeline.setNumber(pipelineNumber);
+    camMode.setNumber(cameraState);
+  }
+
+  public void readValues() {
+    // Display limelight Statistics on Smart Dashboard
+    SmartDashboard.putNumber("Horizontal Offset", horizonatalOffset);
+    SmartDashboard.putNumber("Vertical Offset", verticalOffset);
+    SmartDashboard.putNumber("Target Area", targetArea);
+    SmartDashboard.putNumber("Skew Amount", skewAmount);
+    SmartDashboard.putString("LED State", ledStateWord);
+    SmartDashboard.putNumber("Pipeline", pipelineNumber);
+    SmartDashboard.putString("Camera State", cameraStateWord);
+
+    // Display Connection
+    if (checkConnection()) {
+      SmartDashboard.putString("Connection", "Connected");
+    } else {
+      SmartDashboard.putString("Connection", "Not Connected");
+    }
+  }
+
+  // Used to Check Connection w/Limelight - This outputs to SmartDashboard
+  // once we start working on that
+  private boolean checkConnection() {
 
     if (table.getKeys().size() < 20) {
       // Usually it has 25 keys, it will have 0 if the Limelight hasn't been connected
       // If a key has been set before checking this, the size will not be zero
       limeLightConnected = false;
-      System.out.println("Limelight failed to Connect");
     } else {
       if (!limeLightConnected)
-        System.out.println("Limelight Connected");
-      limeLightConnected = true;
+        limeLightConnected = true;
     }
+    return limeLightConnected;
   }
 
   public void setLedOn() {
     // 3.0 = LED ON
     checkConnection();
     ledState = 3.0;
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(ledState);
+    ledStateWord = "ON";
   }
 
   public void setLedOff() {
     // 1.0 = LED OFF
     checkConnection();
     ledState = 1.0;
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(ledState);
+    ledStateWord = "OFF";
   }
 
   public void setLedBlink() {
     // 2.0 = LED BLINK
     checkConnection();
     ledState = 2.0;
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(ledState);
+    ledStateWord = "BLINK";
   }
 
   public void visionMode() {
     // 0.0 = Set Limelight to do vision processing
     checkConnection();
     cameraState = 0.0;
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(cameraState);
+    cameraStateWord = "Vision Mode";
   }
 
   public void driverMode() {
     // 1.0 = Set Limelight to regular camera mode; usable for the driver
     checkConnection();
     cameraState = 1.0;
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(cameraState);
+    cameraStateWord = "Driver Mode";
   }
 
   public double gethorizonatalOffset() {
