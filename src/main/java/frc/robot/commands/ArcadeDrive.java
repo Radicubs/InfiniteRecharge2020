@@ -29,11 +29,31 @@ public class ArcadeDrive extends Command
         double scaledSpeed = Math.pow(rawSpeed, 3);
         double scaledRotation = Math.pow(rawSpeed, 3);
 
+
+        /* Yash this won't work, talk to Ananth V
         double leftOut = 0.5 * (scaledSpeed + scaledRotation);
         double rightOut = 0.5 * (scaledSpeed - scaledRotation);
+        */
 
+        /* We need to get the maximum values at all times, while maintaining
+        proportionality between x and y. getScale gets the scale that the values
+        need to multiplied by so that one value IS ALWAYS 1. so we have the maximum
+        motor power while maintaining proportionality */
+
+        double leftOut = (scaledSpeed + scaledRotation);
+        double rightOut = (scaledSpeed - scaledRotation);
+
+        double scale = getScale(leftOut, rightOut);
+
+        leftOut  *= scale;
+        rightOut *= scale;
+        
         Robot.driveBase.drive(leftOut, rightOut);
     }
+
+    double getScale(double x, double y) {
+        return (1 / Math.max(x, y));
+    } 
 
     @Override
     protected boolean isFinished()
