@@ -15,8 +15,8 @@ public class OI
     public static Button leftBottomButton = new JoystickButton(controller, RobotMap.LB_BUTTON);
     public static Button rightBottomButton = new JoystickButton(controller, RobotMap.RB_BUTTON);
 
-
     public OI() {
+
         
     }
 }

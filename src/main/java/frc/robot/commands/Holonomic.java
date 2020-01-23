@@ -52,6 +52,7 @@ public class Holonomic extends Command
     @Override
     protected void execute()
     {
+        System.out.println("Hello");
         // Might make cubic in future
         double xRawAxis = Robot.oi.controller.getRawAxis(RobotMap.LEFT_X_AXIS);
         double yRawAxis = Robot.oi.controller.getRawAxis(RobotMap.LEFT_Y_AXIS);
