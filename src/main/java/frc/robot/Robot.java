@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveBase;
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
 
     // Initialize subsystems
     driveBase = new DriveBase();
+    System.out.println("Hello3");
     oi = new OI();
   }
 
@@ -82,7 +84,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    Scheduler.getInstance().run();
+  }
 
   /** This function is called periodically during test mode. */
   @Override

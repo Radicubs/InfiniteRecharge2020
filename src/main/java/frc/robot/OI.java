@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.*;
 
 public class OI {
   public static Joystick controller = new Joystick(RobotMap.JOYSTICK);
@@ -14,5 +15,8 @@ public class OI {
   public static Button leftBottomButton = new JoystickButton(controller, RobotMap.LB_BUTTON);
   public static Button rightBottomButton = new JoystickButton(controller, RobotMap.RB_BUTTON);
 
-  public OI() {}
+  public OI() {
+
+    aButton.whenPressed(new ArcadeDrive());
+  }
 }

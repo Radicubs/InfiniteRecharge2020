@@ -48,7 +48,9 @@ public class DriveBase extends Subsystem {
     leftMotorMain.set(ControlMode.PercentOutput, leftSpeed);
   }
 
+  @Override
   public void initDefaultCommand() {
     setDefaultCommand(new ArcadeDrive());
+    System.out.println("Hello2");
   }
 }
