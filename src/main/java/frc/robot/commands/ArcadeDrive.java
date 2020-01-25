@@ -55,7 +55,7 @@ public class ArcadeDrive extends Command {
     debugVal++;
     */
 
-    Robot.driveBase.drive(-leftOut, -rightOut);
+    Robot.driveBase.drive(leftOut, rightOut);
   }
 
   double getScale(double x, double y) {
