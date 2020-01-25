@@ -27,7 +27,6 @@ public class Robot extends TimedRobot {
 
   // Declare subsystems
   public static DriveBase driveBase;
-
   public static OI oi;
 
   @Override
