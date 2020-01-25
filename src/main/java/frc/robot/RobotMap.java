@@ -24,13 +24,11 @@ public class RobotMap{
     public static final int CLICK_RIGHT_JOYSTICK = 10;
 
     //PWM MOTORS
-    public static final int LEFT_TALON = 6;
-    public static final int LEFT_FOLLOWER_ONE = 4;
-    public static final int LEFT_FOLLOWER_TWO = 2;
+    public static final int LEFT_TALON = 7;
+    public static final int LEFT_FOLLOWER_ONE = 5;
+    public static final int LEFT_FOLLOWER_TWO = 3;
 
-    public static final int RIGHT_TALON = 7;
-    public static final int RIGHT_FOLLOWER_ONE = 5;
-    public static final int RIGHT_FOLLOWER_TWO = 3;
-
-    
+    public static final int RIGHT_TALON = 6;
+    public static final int RIGHT_FOLLOWER_ONE = 4;
+    public static final int RIGHT_FOLLOWER_TWO = 2; 
 }

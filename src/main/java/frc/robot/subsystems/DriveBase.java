@@ -29,18 +29,13 @@ public class DriveBase extends Subsystem {
     leftMotorMain = new TalonSRX(RobotMap.LEFT_TALON);
     leftMotorTwo = new VictorSPX(RobotMap.LEFT_FOLLOWER_ONE);
     leftMotorThree = new VictorSPX(RobotMap.LEFT_FOLLOWER_TWO);  
-  }
-
-  public void drive(double leftSpeed, double rightSpeed) {
-    rightMotorMain.set(ControlMode.PercentOutput, rightSpeed);
-    leftMotorMain.set(ControlMode.PercentOutput, leftSpeed);
 
     leftMotorMain.configFactoryDefault();
-        leftMotorTwo.configFactoryDefault();
-        leftMotorThree.configFactoryDefault();
-        rightMotorMain.configFactoryDefault();
-        rightMotorTwo.configFactoryDefault();
-        rightMotorThree.configFactoryDefault();
+    leftMotorTwo.configFactoryDefault();
+    leftMotorThree.configFactoryDefault();
+    rightMotorMain.configFactoryDefault();
+    rightMotorTwo.configFactoryDefault();
+    rightMotorThree.configFactoryDefault();
 
 
     rightMotorTwo.follow(rightMotorMain);
@@ -50,7 +45,16 @@ public class DriveBase extends Subsystem {
     leftMotorThree.follow(leftMotorMain);
   }
 
-  public void initDefaultCommand() {
+  public void drive(double leftSpeed, double rightSpeed) 
+  {
+    rightMotorMain.set(ControlMode.PercentOutput, rightSpeed);
+    leftMotorMain.set(ControlMode.PercentOutput, leftSpeed);
+  }
+
+  @Override
+  public void initDefaultCommand() 
+  {
     setDefaultCommand(new ArcadeDrive());
+    System.out.println("Hello2");
   }
 }

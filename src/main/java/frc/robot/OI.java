@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 public class OI
@@ -17,6 +18,8 @@ public class OI
 
 
     public OI() {
+
+        aButton.whenPressed(new ArcadeDrive());
         
     }
 }

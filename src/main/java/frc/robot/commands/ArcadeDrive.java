@@ -1,33 +1,29 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class ArcadeDrive extends Command
-{
-    public ArcadeDrive()
-    {
+public class ArcadeDrive extends Command {
+    private int debugVal = 0; 
+    public ArcadeDrive() {
 
         requires(Robot.driveBase);
 
     }
 
     @Override
-    protected void initialize()
-    {
+    protected void initialize() {
 
     }
 
     @Override
-    protected void execute()
-    {
+    protected void execute() {
         double rawSpeed = Robot.oi.controller.getRawAxis(RobotMap.LEFT_Y_AXIS);
         double rawRotation = Robot.oi.controller.getRawAxis(RobotMap.RIGHT_X_AXIS);
 
         double scaledSpeed = Math.pow(rawSpeed, 3);
-        double scaledRotation = Math.pow(rawSpeed, 3);
+        double scaledRotation = Math.pow(rawRotation, 3);
 
 
         /* Yash this won't work, talk to Ananth V
@@ -47,10 +43,20 @@ public class ArcadeDrive extends Command
 
         leftOut  *= scale;
         rightOut *= scale;
-        
-        Robot.driveBase.drive(leftOut, rightOut);
-    }
 
+        if (debugVal == 200){
+        System.out.println("Left: " + leftOut);
+        System.out.println("Right: " + rightOut);
+        System.out.println("rawSpeed: " + rawSpeed);
+        System.out.println("rawRotation: " + rawRotation);
+        System.out.println("===========================");
+        System.out.println();
+        debugVal = 0;
+        }
+        debugVal++;
+
+        Robot.driveBase.drive(-leftOut, -rightOut);
+    }
     double getScale(double x, double y) {
         return (1 / Math.max(x, y));
     } 
