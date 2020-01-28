@@ -157,12 +157,12 @@ public class Limelight extends Subsystem {
     cameraStateWord = "Driver Mode";
   }
 
-  public double gethorizonatalOffset() {
+  public double getHorizonatalOffset() {
     checkConnection();
     return this.horizonatalOffset;
   }
 
-  public double getverticalOffset() {
+  public double getVerticalOffset() {
     checkConnection();
     return this.horizonatalOffset;
   }
