@@ -99,6 +99,8 @@ public class Limelight extends Subsystem {
     SmartDashboard.putNumber("Pipeline", pipelineNumber);
     SmartDashboard.putString("Camera State", cameraStateWord);
 
+    System.out.println("Horizontal Offset: " + horizonatalOffset);
+
     // Display Connection
     if (checkConnection()) {
       SmartDashboard.putString("Connection", "Connected");

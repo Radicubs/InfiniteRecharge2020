@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.Holonomic;;
+import frc.robot.commands.Holonomic;
 
 public class DriveBase extends Subsystem {
 
@@ -17,6 +17,6 @@ public class DriveBase extends Subsystem {
   }
 
   public void initDefaultCommand() {
-    setDefaultCommand(new Holonomic());
+    //setDefaultCommand(new Holonomic());
   }
 }
