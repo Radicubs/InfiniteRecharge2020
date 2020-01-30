@@ -53,6 +53,24 @@ public class Limelight extends Subsystem {
 
     // Check Limelight Connection
     checkConnection();
+  }
+
+  public static Limelight getInstance() {
+
+    if (limelightInstance == null) {
+      limelightInstance = new Limelight();
+    }
+    return limelightInstance;
+  }
+
+  // Update Limelight values in UpdateLimelight.java
+  public void setValues() {
+    ledMode.setNumber(ledState);
+    pipeline.setNumber(pipelineNumber);
+    camMode.setNumber(cameraState);
+  }
+
+  public void readValues() {
 
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
     horizonatalOffset = tx.getDouble(0.0);
@@ -72,24 +90,7 @@ public class Limelight extends Subsystem {
 
     // Establish Pipeline
     pipelineNumber = pipeline.getDouble(0.0);
-  }
 
-  public static Limelight getInstance() {
-
-    if (limelightInstance == null) {
-      limelightInstance = new Limelight();
-    }
-    return limelightInstance;
-  }
-
-  // Update Limelight values in UpdateLimelight.java
-  public void setValues() {
-    ledMode.setNumber(ledState);
-    pipeline.setNumber(pipelineNumber);
-    camMode.setNumber(cameraState);
-  }
-
-  public void readValues() {
     // Display limelight Statistics on Smart Dashboard
     SmartDashboard.putNumber("Horizontal Offset", horizonatalOffset);
     SmartDashboard.putNumber("Vertical Offset", verticalOffset);
@@ -97,7 +98,7 @@ public class Limelight extends Subsystem {
     SmartDashboard.putNumber("Skew Amount", skewAmount);
     SmartDashboard.putString("LED State", ledStateWord);
     SmartDashboard.putNumber("Pipeline", pipelineNumber);
-    SmartDashboard.putString("Camera State", cameraStateWord);
+    // SmartDashboard.putString("Camera State", cameraStateWord);
 
     System.out.println("Horizontal Offset: " + horizonatalOffset);
 
@@ -118,8 +119,7 @@ public class Limelight extends Subsystem {
       // If a key has been set before checking this, the size will not be zero
       limeLightConnected = false;
     } else {
-      if (!limeLightConnected)
-        limeLightConnected = true;
+      if (!limeLightConnected) limeLightConnected = true;
     }
     return limeLightConnected;
   }
