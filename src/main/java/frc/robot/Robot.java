@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
   // Declare subsystems
   public static DriveBase driveBase;
   public static Index index;
+  public static Shooter shooter;
   public static OI oi;
   @Override
   public void robotInit() {

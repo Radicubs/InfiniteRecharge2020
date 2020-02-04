@@ -3,11 +3,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IndexBall extends Command {
+public class ShootBall extends Command {
 
-  public IndexBall() {
+  public ShootBall() {
 
-    requires(Robot.index);
+    requires(Robot.shooter);
   }
 
   @Override
@@ -16,7 +16,7 @@ public class IndexBall extends Command {
   @Override
   protected void execute() {
 
-    Robot.index.drive(-1, -1);
+    Robot.index.drive(1, 1);
   }
 
   @Override

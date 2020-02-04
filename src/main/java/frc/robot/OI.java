@@ -17,6 +17,7 @@ public class OI {
 
   public OI() {
 
-    aButton.whenPressed(new ArcadeDrive());
+    aButton.whenPressed(new IndexBall());
+    xButton.whenPressed(new ShootBall());
   }
 }

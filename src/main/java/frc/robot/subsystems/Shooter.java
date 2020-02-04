@@ -5,28 +5,28 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.IndexBall;
+import frc.robot.commands.ShootBall;
 
-public class Index extends Subsystem {
+public class Shooter extends Subsystem {
 
   // Have to initialize motors here
 
   // Right Motors
-  private VictorSPX indexMotor;
+  private VictorSPX shooterMotor;
 
 
-  public Index() { // constructor
-    indexMotor = new VictorSPX(RobotMap.INDEX_CONTROLLER);
+  public Shooter() { // constructor
+    shooterMotor = new VictorSPX(RobotMap.SHOOTER_CONTROLLER);
 
-    indexMotor.configFactoryDefault();
+    shooterMotor.configFactoryDefault();
   }
 
   public void drive(double leftSpeed, double rightSpeed) {
-    indexMotor.set(ControlMode.PercentOutput, rightSpeed);
+    shooterMotor.set(ControlMode.PercentOutput, rightSpeed);
   }
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new IndexBall());
+    setDefaultCommand(new ShootBall());
   }
 }
