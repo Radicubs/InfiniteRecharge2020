@@ -16,7 +16,7 @@ public class ShootBall extends Command {
   @Override
   protected void execute() {
 
-    Robot.index.drive(1, 1);
+    Robot.shooter.drive(1);
   }
 
   @Override

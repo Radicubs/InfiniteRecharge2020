@@ -16,7 +16,7 @@ public class IndexBall extends Command {
   @Override
   protected void execute() {
 
-    Robot.index.drive(-1, -1);
+    Robot.index.drive(-1);
   }
 
   @Override
