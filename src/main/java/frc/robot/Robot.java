@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
@@ -27,8 +27,8 @@ public class Robot extends TimedRobot {
 
   // Declare subsystems
   public static DriveBase driveBase;
+  public static Index index;
   public static OI oi;
-
   @Override
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
