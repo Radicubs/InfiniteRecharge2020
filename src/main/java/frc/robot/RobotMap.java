@@ -33,6 +33,6 @@ public class RobotMap {
   // public static final int RIGHT_FOLLOWER_TWO = 3;
 
   // UTILITY MOTORS
-  public static final int INDEX_CONTROLLER = 2;
-  public static final int SHOOTER_CONTROLLER = 3;
+  public static final int INDEX_MOTOR = 2;
+  public static final int SHOOTER_MOTOR = 3;
 }

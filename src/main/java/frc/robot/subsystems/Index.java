@@ -16,7 +16,7 @@ public class Index extends Subsystem {
 
 
   public Index() { // constructor
-    indexMotor = new VictorSPX(RobotMap.INDEX_CONTROLLER);
+    indexMotor = new VictorSPX(RobotMap.INDEX_MOTOR);
 
     indexMotor.configFactoryDefault();
   }

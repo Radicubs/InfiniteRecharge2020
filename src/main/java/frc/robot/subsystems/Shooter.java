@@ -16,7 +16,7 @@ public class Shooter extends Subsystem {
 
 
   public Shooter() { // constructor
-    shooterMotor = new VictorSPX(RobotMap.SHOOTER_CONTROLLER);
+    shooterMotor = new VictorSPX(RobotMap.SHOOTER_MOTOR);
 
     shooterMotor.configFactoryDefault();
   }
