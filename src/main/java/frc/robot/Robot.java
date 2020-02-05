@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Shooter;
 
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
@@ -28,6 +29,7 @@ public class Robot extends TimedRobot {
   // Declare subsystems
   public static DriveBase driveBase;
   public static OI oi;
+  public static Shooter shooter;
 
   @Override
   public void robotInit() {
@@ -39,6 +41,7 @@ public class Robot extends TimedRobot {
     driveBase = new DriveBase();
     System.out.println("Hello3");
     oi = new OI();
+    shooter = new Shooter();
   }
 
   /**
