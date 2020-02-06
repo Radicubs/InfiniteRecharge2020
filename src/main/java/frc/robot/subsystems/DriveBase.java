@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,6 +30,10 @@ public class DriveBase extends Subsystem {
     leftMotorTwo.configFactoryDefault();
     rightMotorMain.configFactoryDefault();
     rightMotorTwo.configFactoryDefault();
+    leftMotorMain.setNeutralMode(NeutralMode.Brake);
+    leftMotorTwo.setNeutralMode(NeutralMode.Brake);
+    rightMotorMain.setNeutralMode(NeutralMode.Brake);
+    rightMotorTwo.setNeutralMode(NeutralMode.Brake);
 
     rightMotorTwo.follow(rightMotorMain);
 

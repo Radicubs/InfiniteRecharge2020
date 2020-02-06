@@ -34,11 +34,16 @@ public class Limelight extends Subsystem {
   double targetArea;
   double skewAmount;
 
+  double llAngle = 35; // angle of the limelight in degrees
+  double targetHeight = 90.75 - 56; // height of the target in inches
+
   // Check Connection
   boolean limeLightConnected;
 
   // Instance of limelight
   private static Limelight limelightInstance;
+
+  int debugVal = 0;
 
   public Limelight() {
     // Instantiate Network Table + Entries
@@ -63,6 +68,17 @@ public class Limelight extends Subsystem {
     return limelightInstance;
   }
 
+  public NetworkTable getTable() {
+    return table;
+  }
+
+  public double calculateDistance() {
+    double targetAngle = llAngle + ty.getDouble(0.0);
+    targetAngle = Math.toRadians(targetAngle);
+    double distance = targetHeight / Math.tan(targetAngle);
+    return distance;
+  }
+
   // Update Limelight values in UpdateLimelight.java
   public void setValues() {
     ledMode.setNumber(ledState);
@@ -71,26 +87,19 @@ public class Limelight extends Subsystem {
   }
 
   public void readValues() {
-
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
     horizonatalOffset = tx.getDouble(0.0);
-
     // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
     verticalOffset = ty.getDouble(0.0);
-
     // Target Area (0% of image to 100% of image)
     targetArea = ta.getDouble(0.0);
-
     // Sets LED on at startup
     ledState = ledMode.getDouble(3.0);
     ledStateWord = "ON";
-
     // Vision Mode on startup
     cameraState = camMode.getDouble(0.0);
-
     // Establish Pipeline
     pipelineNumber = pipeline.getDouble(0.0);
-
     // Display limelight Statistics on Smart Dashboard
     SmartDashboard.putNumber("Horizontal Offset", horizonatalOffset);
     SmartDashboard.putNumber("Vertical Offset", verticalOffset);
@@ -100,14 +109,27 @@ public class Limelight extends Subsystem {
     SmartDashboard.putNumber("Pipeline", pipelineNumber);
     // SmartDashboard.putString("Camera State", cameraStateWord);
 
-    System.out.println("Horizontal Offset: " + horizonatalOffset);
+    // System.out.println("Horizontal Offset: " + horizonatalOffset);
 
     // Display Connection
     if (checkConnection()) {
       SmartDashboard.putString("Connection", "Connected");
     } else {
-      SmartDashboard.putString("Connection", "Not Connected");
+      SmartDashboard.putString("Connection", "Not Connepcted");
     }
+
+    // return tx;
+
+    if (debugVal > 200) {
+      System.out.println("Horizontal Offset: " + horizonatalOffset);
+      System.out.println("Vertical Offset: " + verticalOffset);
+      System.out.println("Target Area: " + targetArea);
+      System.out.println("Skew Area: " + skewAmount);
+      System.out.println("===========================");
+      System.out.println();
+      debugVal = 0;
+    }
+    debugVal++;
   }
 
   // Used to Check Connection w/Limelight - This outputs to SmartDashboard
