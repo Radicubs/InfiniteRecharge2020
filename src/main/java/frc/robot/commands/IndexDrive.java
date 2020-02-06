@@ -3,9 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimberDrive extends Command {
-  public ClimberDrive() {
-    requires(Robot.climber);
+public class IndexDrive extends Command {
+  public IndexDrive() {
+    requires(Robot.index);
   }
 
   @Override
@@ -13,13 +13,12 @@ public class ClimberDrive extends Command {
 
   @Override
   protected void execute() {
-    
-    if (Robot.oi.xButton.get()) {
-      Robot.climber.climb(0.1);
+    if (Robot.oi.yButton.get()) {
+        Robot.index.indexBall(1);
     }else{
-      Robot.climber.climb(0);
+        Robot.index.indexBall(0);
     }
-  
+    
   }
 
   @Override

@@ -17,7 +17,8 @@ public class OI {
 
   public OI() {
 
-    //aButton.whenPressed(new ShooterDrive());
+    aButton.whenPressed(new ShooterDrive());
     xButton.whileHeld(new ClimberDrive());
+    yButton.whileHeld(new IndexDrive());
   }
 }

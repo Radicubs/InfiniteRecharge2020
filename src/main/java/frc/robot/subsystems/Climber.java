@@ -28,8 +28,8 @@ public class Climber extends Subsystem {
 
   }
 
-  public void climb() {
-     climberMotorTwo.set(ControlMode.PercentOutput, -0.1);
+  public void climb(double speed) {
+     climberMotorTwo.set(ControlMode.PercentOutput, speed);
 }
 
   @Override

@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
   public static DriveBase driveBase;
   public static Shooter shooter;
   public static Climber climber;
+  public static Index index;
   public static OI oi;
 
   @Override
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
     System.out.println("Hello3");
     climber = new Climber();
     shooter = new Shooter();
+    index = new Index();
     oi = new OI();
   }
 
