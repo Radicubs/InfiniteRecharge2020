@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.Robot;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ShooterDrive;;
 
@@ -17,13 +18,13 @@ public class Shooter extends Subsystem {
   private VictorSPX shooterMotor;
 
   public Shooter() { // constructor
-    shooterMotor = new VictorSPX(RobotMap.RIGHT_RANDOM);
+    shooterMotor = new VictorSPX(RobotMap.SHOOTER_MOTOR);
 
     shooterMotor.configFactoryDefault();
   }
 
-  public void shoot() {
-    shooterMotor.set(ControlMode.PercentOutput, 0.2);
+  public void shoot(double speed) {
+    shooterMotor.set(ControlMode.PercentOutput, speed);
   }
 
   @Override

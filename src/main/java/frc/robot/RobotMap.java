@@ -26,13 +26,13 @@ public class RobotMap {
   // PWM MOTORS
   public static final int LEFT_TALON = 6;
   public static final int LEFT_FOLLOWER_ONE = 4;
-  // public static final int LEFT_FOLLOWER_TWO = 2;
 
   public static final int RIGHT_TALON = 7;
   public static final int RIGHT_FOLLOWER_ONE = 5;
-  // public static final int RIGHT_FOLLOWER_TWO = 3;
 
-  // UTILITY MOTORS
-  public static final int LEFT_RANDOM = 2;
-  public static final int RIGHT_RANDOM = 3;
+  // SUBSYSTEM MOTORS
+  public static final int CLIMB_MOTOR_ONE = 2;
+  public static final int CLIMB_MOTOR_TWO = 3; //Not Actual Value Yet
+  public static final int SHOOTER_MOTOR = 3;
+  public static final int INDEX_MOTOR = 5; //Not Actual Value Yet
 }

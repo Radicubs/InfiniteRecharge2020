@@ -11,9 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DriveBase;
-import frc.robot.subsystems.Shooter;
-
+import frc.robot.subsystems.*;
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
  * to each mode, as described in the TimedRobot documentation. If you change the name of this class
@@ -28,8 +26,9 @@ public class Robot extends TimedRobot {
 
   // Declare subsystems
   public static DriveBase driveBase;
-  public static OI oi;
   public static Shooter shooter;
+  public static Climber climber;
+  public static OI oi;
 
   @Override
   public void robotInit() {
@@ -40,19 +39,15 @@ public class Robot extends TimedRobot {
     // Initialize subsystems
     driveBase = new DriveBase();
     System.out.println("Hello3");
-    oi = new OI();
+    climber = new Climber();
     shooter = new Shooter();
+    oi = new OI();
   }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use this for items like
-   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before LiveWindow and
-   * SmartDashboard integrated updating.
-   */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -88,6 +83,11 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
+  }
+
+  @Override
+  public void disabledPeriodic(){
     Scheduler.getInstance().run();
   }
 

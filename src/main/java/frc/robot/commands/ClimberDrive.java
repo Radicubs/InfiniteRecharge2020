@@ -2,11 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ShooterDrive extends Command {
-  public ShooterDrive() {
-    requires(Robot.shooter);
+public class ClimberDrive extends Command {
+  public ClimberDrive() {
+    requires(Robot.climber);
   }
 
   @Override
@@ -14,11 +13,11 @@ public class ShooterDrive extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.oi.aButton.get()) {
-      Robot.shooter.shoot(0.2);
-    } else {
-      Robot.shooter.shoot(0);
+    /*
+    if (Robot.oi.xButton.get()) {
+      Robot.climber.climb();
     }
+    */
   }
 
   @Override
