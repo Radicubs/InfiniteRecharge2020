@@ -5,8 +5,6 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ArcadeDrive extends Command {
-  private int debugVal = 0;
-
   public ArcadeDrive() {
 
     requires(Robot.driveBase);
@@ -17,59 +15,22 @@ public class ArcadeDrive extends Command {
 
   @Override
   protected void execute() {
+
+    // Get Raw Axis Amounts
     double rawSpeed = Robot.oi.controller.getRawAxis(RobotMap.LEFT_Y_AXIS);
     double rawRotation = Robot.oi.controller.getRawAxis(RobotMap.RIGHT_X_AXIS);
 
-    double scaledSpeed = Math.pow(rawSpeed, 3);
-    double scaledRotation = Math.pow(rawRotation, 3);
+    // Make Controller values less sensitive; easier for the user to use 
+    double scaledSpeed = Math.copySign(Math.pow(rawSpeed, 4), rawSpeed); //copy sign to maintain direction
+    double scaledRotation = Math.copySign(Math.pow(rawRotation, 2), rawRotation);
 
-    /* Yash this won't work, talk to Ananth V
-    double leftOut = 0.5 * (scaledSpeed + scaledRotation);
-    double rightOut = 0.5 * (scaledSpeed - scaledRotation);
-    */
-
-    /* We need to get the maximum values at all times, while maintaining
-    proportionality between x and y. getScale gets the scale that the values
-    need to multiplied by so that one value IS ALWAYS 1. so we have the maximum
-    motor power while maintaining proportionality */
-
+    // Calculate the amount output for each motor
     double leftOut = (scaledSpeed - scaledRotation);
     double rightOut = (scaledSpeed + scaledRotation);
-    
-    double scale = getScale(leftOut, rightOut);
 
-    //leftOut *= scale;
-    //rightOut *= scale;
-
-    
-    if (debugVal%200 == 0) {
-      System.out.println("Left: " + leftOut);
-      System.out.println("Right: " + rightOut);
-      System.out.println("rawSpeed: " + rawSpeed);
-      System.out.println("scaledSpeed: " + scaledSpeed);
-      System.out.println("rawRotation: " + rawRotation);
-      System.out.println("===========================");
-      System.out.println();
-      debugVal++;
-    }
-    debugVal++;
-
-    final double TURN_CONSTANT = 0.3;
-    double threshold = 0.05;
-    /*if((leftOut > 0 && rightOut < 0) || (leftOut < 0 && rightOut > 0)){
-      Robot.driveBase.drive(-leftOut*TURN_CONSTANT, rightOut*TURN_CONSTANT);*/
-    //}else if(Math.abs(leftOut - rightOut) < threshold){
-      Robot.driveBase.drive(-leftOut, rightOut);
-  //}
+    // Drive!
+    Robot.driveBase.drive(-leftOut, rightOut);
 }
-
-  double getScale(double x, double y) {
-    double max = Math.max(Math.abs(x), Math.abs(y));
-    if (max < 0.03) {
-      return 0;
-    }
-    return (1 / max);
-  }
 
   @Override
   protected boolean isFinished() {
