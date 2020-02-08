@@ -33,15 +33,16 @@ public class ArcadeDrive extends Command {
     need to multiplied by so that one value IS ALWAYS 1. so we have the maximum
     motor power while maintaining proportionality */
 
-    double leftOut = (scaledSpeed + scaledRotation*.5);
-    double rightOut = (scaledSpeed - scaledRotation*.5);
+    double leftOut = (scaledSpeed - scaledRotation);
+    double rightOut = (scaledSpeed + scaledRotation);
     
     double scale = getScale(leftOut, rightOut);
 
-    leftOut *= scale;
-    rightOut *= scale;
+    //leftOut *= scale;
+    //rightOut *= scale;
+
     
-    if (debugVal %200) {
+    if (debugVal%200 == 0) {
       System.out.println("Left: " + leftOut);
       System.out.println("Right: " + rightOut);
       System.out.println("rawSpeed: " + rawSpeed);
@@ -53,8 +54,14 @@ public class ArcadeDrive extends Command {
     }
     debugVal++;
 
-    Robot.driveBase.drive(-leftOut, rightOut);
-  }
+    final double TURN_CONSTANT = 0.3;
+    double threshold = 0.05;
+    /*if((leftOut > 0 && rightOut < 0) || (leftOut < 0 && rightOut > 0)){
+      Robot.driveBase.drive(-leftOut*TURN_CONSTANT, rightOut*TURN_CONSTANT);*/
+    //}else if(Math.abs(leftOut - rightOut) < threshold){
+      Robot.driveBase.drive(-leftOut, rightOut);
+  //}
+}
 
   double getScale(double x, double y) {
     double max = Math.max(Math.abs(x), Math.abs(y));
