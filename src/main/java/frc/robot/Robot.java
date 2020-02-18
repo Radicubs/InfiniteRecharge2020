@@ -72,6 +72,7 @@ public class Robot extends TimedRobot {
   }
 
   /** This function is called periodically during autonomous. */
+  // WRITE AUTONOMOUS CODE HERE
   @Override
   public void autonomousPeriodic() {
     switch (m_autoSelected) {
@@ -88,7 +89,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run();
+    Scheduler.getInstance().run(); // <--- VERY IMPORTANT DON'T REMOVE
   }
 
   /** This function is called periodically during test mode. */
