@@ -3,11 +3,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AimX extends Command {
-  public AimX() {
+public class RotationAlignment extends Command {
+  public RotationAlignment() {
 
     requires(Robot.driveBase);
   }
+
+  private boolean rotationFinished = false;
 
   @Override
   protected void initialize() {}
@@ -23,13 +25,15 @@ public class AimX extends Command {
       Robot.driveBase.drive(x / 100, x / 100);
     } else if (x > 0) {
       Robot.driveBase.drive(x / 100, x / 100);
+    }else{
+      rotationFinished = true;
     }
   }
 
   @Override
   protected boolean isFinished() {
     // Make this return true when this Command no longer needs to run execute()
-    return false;
+    return rotationFinished;
   }
 
   @Override

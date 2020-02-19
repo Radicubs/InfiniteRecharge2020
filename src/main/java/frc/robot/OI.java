@@ -16,6 +16,6 @@ public class OI {
   public static Button rightBottomButton = new JoystickButton(controller, RobotMap.RB_BUTTON);
 
   public OI() {
-    aButton.whenPressed(new AimX());
+    aButton.whenPressed(new ShooterAlignment());
   }
 }
