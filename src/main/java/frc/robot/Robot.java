@@ -8,9 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.Autonomous.RightAuto;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Limelight;
 
@@ -21,10 +23,15 @@ import frc.robot.subsystems.Limelight;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private static final String leftAuto = "Left Auto";
+  private static final String rightAuto = "Right Auto";
+  private static final String middleAuto = "Middle Auto";
+  private static final String defaultAuto = "Default Auto";
+
+  private Command rightAutoCommand = new RightAuto();
+
+  private String autoSelected;
+  private final SendableChooser<String> autoChooser = new SendableChooser<>();
 
   // Declare subsystems
   public static DriveBase driveBase;
@@ -33,14 +40,14 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    autoChooser.setDefaultOption("Default Auto", defaultAuto);
+    autoChooser.addOption("My Auto", rightAuto);
+    
+    SmartDashboard.putData("Auto choices", autoChooser);
 
     // Initialize subsystems
     limeLight = new Limelight();
     driveBase = new DriveBase();
-    System.out.println("Hello3");
     oi = new OI();
   }
 
@@ -66,21 +73,24 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
+    autoSelected = autoChooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    System.out.println("Auto selected: " + autoSelected);
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
+    switch (autoSelected) {
+      case leftAuto:
+        rightAutoCommand.start();
+      case rightAuto:
         break;
-      case kDefaultAuto:
+      case middleAuto:
+        break;
+      case defaultAuto:
+        break;
       default:
-        // Put default auto code here
         break;
     }
   }
