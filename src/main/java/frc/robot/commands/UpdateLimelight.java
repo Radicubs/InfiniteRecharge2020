@@ -22,7 +22,7 @@ public class UpdateLimelight extends Command {
   protected void execute() {
     Robot.limeLight.setValues();
     Robot.limeLight.readValues();
-    System.out.println(Robot.limeLight.calculateDistance());
+    // System.out.println(Robot.limeLight.calculateDistance());
   }
 
   // Make this return true when this Command no longer needs to run execute()

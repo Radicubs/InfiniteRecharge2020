@@ -20,8 +20,9 @@ public class ArcadeDrive extends Command {
     double rawSpeed = Robot.oi.controller.getRawAxis(RobotMap.LEFT_Y_AXIS);
     double rawRotation = Robot.oi.controller.getRawAxis(RobotMap.RIGHT_X_AXIS);
 
-    // Make Controller values less sensitive; easier for the user to use 
-    double scaledSpeed = Math.copySign(Math.pow(rawSpeed, 4), rawSpeed); //copy sign to maintain direction
+    // Make Controller values less sensitive; easier for the user to use
+    double scaledSpeed =
+        Math.copySign(Math.pow(rawSpeed, 4), rawSpeed); // copy sign to maintain direction
     double scaledRotation = Math.copySign(Math.pow(rawRotation, 2), rawRotation);
 
     // Calculate the amount output for each motor
@@ -30,7 +31,7 @@ public class ArcadeDrive extends Command {
 
     // Drive!
     Robot.driveBase.drive(-leftOut, rightOut);
-}
+  }
 
   @Override
   protected boolean isFinished() {
