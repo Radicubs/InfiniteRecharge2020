@@ -17,5 +17,6 @@ public class OI {
 
   public OI() {
     aButton.whenPressed(new AutoShoot());
+    xButton.whenPressed(new DriveMode());
   }
 }
