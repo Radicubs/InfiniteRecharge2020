@@ -20,7 +20,7 @@ public class DriveBase extends Subsystem {
   private TalonSRX leftMotorMain;
   private VictorSPX leftMotorTwo;
 
-  public DriveBase() { 
+  public DriveBase() {
 
     // constructor
     rightMotorMain = new TalonSRX(RobotMap.RIGHT_TALON);
@@ -29,7 +29,7 @@ public class DriveBase extends Subsystem {
     leftMotorMain = new TalonSRX(RobotMap.LEFT_TALON);
     leftMotorTwo = new VictorSPX(RobotMap.LEFT_FOLLOWER_ONE);
 
-    //Set Motors to default and neutral
+    // Set Motors to default and neutral
     leftMotorMain.configFactoryDefault();
     leftMotorTwo.configFactoryDefault();
     rightMotorMain.configFactoryDefault();
@@ -39,7 +39,7 @@ public class DriveBase extends Subsystem {
     rightMotorMain.setNeutralMode(NeutralMode.Brake);
     rightMotorTwo.setNeutralMode(NeutralMode.Brake);
 
-    // Follow 
+    // Follow
     rightMotorTwo.follow(rightMotorMain);
     leftMotorTwo.follow(leftMotorMain);
   }

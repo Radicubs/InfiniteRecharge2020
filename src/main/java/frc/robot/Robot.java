@@ -7,15 +7,18 @@
 
 package frc.robot;
 
+import com.revrobotics.ColorSensorV3;
+
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.Autonomous.RightAuto;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Limelight;
-
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
  * to each mode, as described in the TimedRobot documentation. If you change the name of this class
@@ -27,6 +30,12 @@ public class Robot extends TimedRobot {
   private static final String rightAuto = "Right Auto";
   private static final String middleAuto = "Middle Auto";
   private static final String defaultAuto = "Default Auto";
+
+  private Color detectedColor;
+  private double redAmount, greenAmount, blueAmount;
+
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
 
   private Command rightAutoCommand = new RightAuto();
 
@@ -42,7 +51,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     autoChooser.setDefaultOption("Default Auto", defaultAuto);
     autoChooser.addOption("My Auto", rightAuto);
-    
+
     SmartDashboard.putData("Auto choices", autoChooser);
 
     // Initialize subsystems
@@ -59,7 +68,12 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    detectedColor = colorSensor.getColor();
+    redAmount = detectedColor.red;
+    greenAmount = detectedColor.green;
+    blueAmount = detectedColor.blue;
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
