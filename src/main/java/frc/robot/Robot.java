@@ -7,24 +7,18 @@
 
 package frc.robot;
 
-import com.revrobotics.ColorSensorV3;
-
-import frc.robot.commands.Autonomous.*;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.subsystems.DriveBase;
-import frc.robot.subsystems.Limelight;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.autonomous.*;
+import frc.robot.subsystems.*;
 
 /**
- * The VM is configuRobotd to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.gradle file in the
+ * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
+ * to each mode, as described in the TimedRobot documentation. If you change the name of this class
+ * or the package after creating this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
@@ -33,13 +27,7 @@ public class Robot extends TimedRobot {
   private static final String middleAuto = "Middle Auto";
   private static final String defaultAuto = "Default Auto";
 
-  private Color detectedColor;
-  private double redAmount, greenAmount, blueAmount;
-
-  private final I2C.Port i2cPort = I2C.Port.kOnboard;
-  private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
-
-  private Command rightAutoCommand = new RightAuto();
+  Command rightAutoCommand;
 
   private String autoSelected;
   private SendableChooser<String> autoChooser = new SendableChooser<>();
@@ -47,6 +35,7 @@ public class Robot extends TimedRobot {
   // Declare subsystems
   public static DriveBase driveBase;
   public static Limelight limeLight;
+  public static ColorSensor colorSensor;
   public static OI oi;
 
   @Override
@@ -57,8 +46,11 @@ public class Robot extends TimedRobot {
 
     // Initialize subsystems
     limeLight = new Limelight();
+    colorSensor = new ColorSensor();
     driveBase = new DriveBase();
     oi = new OI();
+
+    rightAutoCommand = new RightAuto();
   }
 
   /**
@@ -70,14 +62,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    detectedColor = colorSensor.getColor();
-    redAmount = detectedColor.red;
-    greenAmount = detectedColor.green;
-    blueAmount = detectedColor.blue;
+    /*
+        detectedColor = colorSensor.getColor();
+        redAmount = detectedColor.red;
+        greenAmount = detectedColor.green;
+        blueAmount = detectedColor.blue;
+    */
 
-    System.out.println("RED" + redAmount);
-    System.out.println("GREEN" + greenAmount);
-    System.out.println("BLUE" + blueAmount);
+    System.out.println("Color memory" + colorSensor.getColor());
+    System.out.println("R: " + colorSensor.getRed());
+    System.out.println("G: " + colorSensor.getGreen());
+    System.out.println("B: " + colorSensor.getBlue());
+
+    // System.out.println("Likely color: " + colorSensor.getColor().blue);
   }
 
   /**
@@ -92,7 +89,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    autoSelected = (String)autoChooser.getSelected();
+    autoSelected = (String) autoChooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + autoSelected);
   }
