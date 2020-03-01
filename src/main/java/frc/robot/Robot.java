@@ -48,9 +48,8 @@ public class Robot extends TimedRobot {
     limeLight = new Limelight();
     colorSensor = new ColorSensor();
     driveBase = new DriveBase();
-    oi = new OI();
-
     rightAutoCommand = new RightAuto();
+    oi = new OI();
   }
 
   /**

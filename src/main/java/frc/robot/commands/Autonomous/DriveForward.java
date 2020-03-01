@@ -4,16 +4,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class DriveForward extends Command{
-  private long timeToRun;
   private double speed;
-  public DriveForward(long timeToRun, double speed) {
+  public DriveForward(double timeToRun, double speed) {
+    super(timeToRun);
     requires(Robot.driveBase);
-    this.timeToRun = timeToRun;
     this.speed = speed;
   }
 
-  // Time to Run command (use it for distance as well)
-    long endTime = System.currentTimeMillis() + timeToRun;
 
   @Override
   protected void initialize() {
@@ -28,11 +25,13 @@ public class DriveForward extends Command{
   @Override
   protected boolean isFinished() {
     // Make this return true when this Command no longer needs to run execute()
-    return System.currentTimeMillis() > endTime;
+    return false;
   }
 
   @Override
-  protected void end() {}
+  protected void end() {
+    Robot.driveBase.drive(0,0);
+  }
 
   @Override
   protected void interrupted() {
