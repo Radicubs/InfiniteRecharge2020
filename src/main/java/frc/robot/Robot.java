@@ -62,19 +62,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    /*
-        detectedColor = colorSensor.getColor();
-        redAmount = detectedColor.red;
-        greenAmount = detectedColor.green;
-        blueAmount = detectedColor.blue;
-    */
 
-    System.out.println("Color memory" + colorSensor.getColor());
-    System.out.println("R: " + colorSensor.getRed());
-    System.out.println("G: " + colorSensor.getGreen());
-    System.out.println("B: " + colorSensor.getBlue());
-
-    // System.out.println("Likely color: " + colorSensor.getColor().blue);
   }
 
   /**

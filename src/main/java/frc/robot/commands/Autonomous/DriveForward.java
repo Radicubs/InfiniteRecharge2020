@@ -5,9 +5,11 @@ import frc.robot.Robot;
 
 public class DriveForward extends Command{
   private long timeToRun;
-  public DriveForward(long timeToRun) {
+  private double speed;
+  public DriveForward(long timeToRun, double speed) {
     requires(Robot.driveBase);
     this.timeToRun = timeToRun;
+    this.speed = speed;
   }
 
   // Time to Run command (use it for distance as well)
@@ -20,7 +22,7 @@ public class DriveForward extends Command{
 
 
   protected void execute() {
-      Robot.driveBase.drive(-0.3,0.3);
+      Robot.driveBase.drive(-speed,speed);
   }
 
   @Override
