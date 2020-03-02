@@ -25,30 +25,44 @@ public class Robot extends TimedRobot {
   private static final String leftAuto = "Left Auto";
   private static final String rightAuto = "Right Auto";
   private static final String middleAuto = "Middle Auto";
-  private static final String defaultAuto = "Default Auto";
 
-  Command rightAutoCommand;
-
+  // Autonomous Declarations
   private String autoSelected;
   private SendableChooser<String> autoChooser = new SendableChooser<>();
+  Command rightAutoCommand;
+  Command leftAutoCommand;
+  Command middleAutoCommand;
+
 
   // Declare subsystems
   public static DriveBase driveBase;
   public static Limelight limeLight;
   public static ColorSensor colorSensor;
+  public static Index index;
+  public static Intake intake;
+  public static Shooter shooter;
+  public static Elevator elevator;
   public static OI oi;
 
   @Override
   public void robotInit() {
-    autoChooser.setDefaultOption("Default Auto", defaultAuto);
-    autoChooser.addOption("My Auto", rightAuto);
+    autoChooser.addOption("Right Auto", rightAuto);
+    autoChooser.addOption("Middle Auto", middleAuto);
+    autoChooser.addOption("Left Auto", leftAuto);
+
     SmartDashboard.putData("Auto choices", autoChooser);
 
     // Initialize subsystems
     limeLight = new Limelight();
     colorSensor = new ColorSensor();
     driveBase = new DriveBase();
+    index = new Index();
+    intake = new Intake();
+    shooter = new Shooter();
+    elevator = new Elevator();
     rightAutoCommand = new RightAuto();
+    middleAutoCommand = new MiddleAuto();
+    leftAutoCommand = new LeftAuto();
     oi = new OI();
   }
 
@@ -86,14 +100,12 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     switch (autoSelected) {
       case leftAuto:
+        leftAutoCommand.start();
         break;
       case rightAuto:
         rightAutoCommand.start();
       case middleAuto:
-        break;
-      case defaultAuto:
-        break;
-      default:
+        middleAutoCommand.start();
         break;
     }
   }

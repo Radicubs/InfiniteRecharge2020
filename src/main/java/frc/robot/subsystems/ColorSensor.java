@@ -15,7 +15,6 @@ public class ColorSensor extends Subsystem {
   private final ColorMatch colorMatcher = new ColorMatch();
   private final Color yellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113); //Needs Calibration
   Color detectedColor = colorSensor.getColor();
-  boolean ballFound = false;
   ColorMatchResult match;
 
   double redAmount, greenAmount, blueAmount;
