@@ -5,13 +5,16 @@ public class RobotMap {
   // JOYSTICKS
   public static final int JOYSTICK = 0;
 
+  // BUTTON BOARD
+  public static final int BUTTON_BOARD = 0;
+
   // JOYSTICK AXES
   public static final int LEFT_X_AXIS = 0;
   public static final int LEFT_Y_AXIS = 1;
   public static final int RIGHT_X_AXIS = 4;
   public static final int RIGHT_Y_AXIS = 5;
 
-  // BUTTONS
+  // BUTTONS ON CONTROLLER
   public static final int A_BUTTON = 1;
   public static final int B_BUTTON = 2;
   public static final int X_BUTTON = 3;
@@ -23,16 +26,24 @@ public class RobotMap {
   public static final int CLICK_LEFT_JOYSTICK = 9;
   public static final int CLICK_RIGHT_JOYSTICK = 10;
 
+  // BUTTON BOARD BUTTONS: 1 --> 4 GOES LEFT TO RIGHT
+  public static final int TOP_BUTTON_ONE = 1;
+  public static final int TOP_BUTTON_TWO = 2;
+  public static final int TOP_BUTTON_THREE = 3;
+  public static final int TOP_BUTTON_FOUR = 4;
+  public static final int BOTTOM_BUTTON_ONE = 5;
+  public static final int BOTTOM_BUTTON_TWO = 6;
+  public static final int BOTTOM_BUTTON_THREE = 7;
+  public static final int BOTTOM_BUTTON_FOUR = 8;
+
   // PWM MOTORS
   public static final int LEFT_TALON = 6;
   public static final int LEFT_FOLLOWER_ONE = 4;
-  // public static final int LEFT_FOLLOWER_TWO = 2;
 
   public static final int RIGHT_TALON = 7;
   public static final int RIGHT_FOLLOWER_ONE = 5;
-  // public static final int RIGHT_FOLLOWER_TWO = 3;
 
-  // UTILITY MOTORS
+  // SUBSYSTEM MOTORS
   public static final int INTAKE_MOTOR = 2;
   public static final int INDEX_MOTOR = 3;
   public static final int ELEVATOR_MOTOR_ONE = 3;

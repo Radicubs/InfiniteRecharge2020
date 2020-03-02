@@ -60,9 +60,13 @@ public class Robot extends TimedRobot {
     intake = new Intake();
     shooter = new Shooter();
     elevator = new Elevator();
+
+    //Initialize Auto Commands
     rightAutoCommand = new RightAuto();
     middleAutoCommand = new MiddleAuto();
     leftAutoCommand = new LeftAuto();
+
+    //Initialize OI Last
     oi = new OI();
   }
 
