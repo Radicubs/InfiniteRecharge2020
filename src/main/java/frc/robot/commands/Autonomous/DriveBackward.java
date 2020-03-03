@@ -5,8 +5,7 @@ import frc.robot.Robot;
 
 public class DriveBackward extends Command{
   private double speed;
-  public DriveBackward(double timeToRun, double speed) {
-    super(timeToRun);
+  public DriveBackward(double speed) {
     requires(Robot.driveBase);
     this.speed = speed;
   }
@@ -35,6 +34,8 @@ public class DriveBackward extends Command{
 
   @Override
   protected void interrupted() {
-    super.interrupted();
-  }
+    //super.interrupted();
+    System.out.println("Interrupted");
+    end();
+    }
 }

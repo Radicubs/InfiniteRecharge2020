@@ -27,14 +27,14 @@ public class RobotMap {
   public static final int CLICK_RIGHT_JOYSTICK = 10;
 
   // BUTTON BOARD BUTTONS: 1 --> 4 GOES LEFT TO RIGHT
-  public static final int TOP_BUTTON_ONE = 1;
-  public static final int TOP_BUTTON_TWO = 2;
-  public static final int TOP_BUTTON_THREE = 3;
-  public static final int TOP_BUTTON_FOUR = 4;
-  public static final int BOTTOM_BUTTON_ONE = 5;
-  public static final int BOTTOM_BUTTON_TWO = 6;
-  public static final int BOTTOM_BUTTON_THREE = 7;
-  public static final int BOTTOM_BUTTON_FOUR = 8;
+  public static final int TOP_BUTTON_ONE = 4;
+  public static final int TOP_BUTTON_TWO = 3;
+  public static final int TOP_BUTTON_THREE = 2;
+  public static final int TOP_BUTTON_FOUR = 1;
+  public static final int BOTTOM_BUTTON_ONE = 8;
+  public static final int BOTTOM_BUTTON_TWO = 7;
+  public static final int BOTTOM_BUTTON_THREE = 6;
+  public static final int BOTTOM_BUTTON_FOUR = 5;
 
   // PWM MOTORS
   public static final int LEFT_TALON = 6;
