@@ -50,7 +50,7 @@ public class ArcadeDrive extends Command {
   public static void changeDriveMode(){
       if (driveMode == 1.0){
         driveMode = 0.4;
-      }else{
+      } else {
         driveMode = 1.0;
       }
   }

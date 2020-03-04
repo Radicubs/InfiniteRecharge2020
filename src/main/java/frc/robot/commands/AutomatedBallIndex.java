@@ -31,7 +31,6 @@ public class AutomatedBallIndex extends Command{
 
   @Override
   protected void end() {
-    Robot.driveBase.drive(0,0);
   }
 
   @Override
