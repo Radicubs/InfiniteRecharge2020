@@ -1,27 +1,24 @@
-package frc.robot.commands.autonomous;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DriveForward extends Command{
-  private double speed;
+public class DynamicShooting extends Command {
 
-  public DriveForward(double speed) {
-    requires(Robot.driveBase);
-    this.speed = speed;
-    //System.out.println("Called");
-  }
-
+  public DynamicShooting() {
+    requires(Robot.shooter);
+    requires(Robot.index);
+}
 
   @Override
-  protected void initialize() {
-
-  } 
+  protected void initialize() {}
 
   @Override
   protected void execute() {
-      Robot.driveBase.drive(-speed,speed);
-      //System.out.println("Called");
+      // run indexer
+      Robot.index.index(0.5);
+      // run shooter
+      Robot.shooter.shoot(1.0);
 
   }
 
@@ -33,7 +30,9 @@ public class DriveForward extends Command{
 
   @Override
   protected void end() {
-    Robot.driveBase.drive(0,0);
+      // set both to zero
+      Robot.index.index(0);
+      Robot.shooter.shoot(0);
   }
 
   @Override

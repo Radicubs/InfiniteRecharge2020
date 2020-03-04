@@ -99,6 +99,7 @@ public class Robot extends TimedRobot {
         break;
       case rightAuto:
         autonomous = new RightAuto();
+        break;
       case middleAuto:
         autonomous = new MiddleAuto();
         break;
