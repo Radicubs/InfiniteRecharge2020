@@ -8,11 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DriveBase;
-import frc.robot.subsystems.Limelight;
+import frc.robot.commands.autonomous.*;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
@@ -21,26 +22,47 @@ import frc.robot.subsystems.Limelight;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private static final String leftAuto = "Left Auto";
+  private static final String rightAuto = "Right Auto";
+  private static final String middleAuto = "Middle Auto";
+
+  // Autonomous Declarations
+  private String autoSelected;
+  private SendableChooser<String> autoChooser = new SendableChooser<>();
+
+
+  Command autonomous;
 
   // Declare subsystems
   public static DriveBase driveBase;
   public static Limelight limeLight;
+  public static ColorSensor colorSensor;
+  public static Index index;
+  public static Intake intake;
+  public static Shooter shooter;
+  public static Elevator elevator;
   public static OI oi;
 
   @Override
   public void robotInit() {
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    autoChooser.addOption("Right Auto", rightAuto);
+    autoChooser.addOption("Middle Auto", middleAuto);
+    autoChooser.addOption("Left Auto", leftAuto);
+    autoChooser.setDefaultOption("Default Auto", new String("Default Auto"));
 
+    SmartDashboard.putData("Auto choices", autoChooser);
+    SmartDashboard.updateValues();
     // Initialize subsystems
     limeLight = new Limelight();
+
+    colorSensor = new ColorSensor();
     driveBase = new DriveBase();
-    System.out.println("Hello3");
+    index = new Index();
+    intake = new Intake();
+    shooter = new Shooter();
+    elevator = new Elevator();
+
+    //Initialize OI Last
     oi = new OI();
   }
 
@@ -52,7 +74,9 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -66,24 +90,55 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    autoSelected = (String) autoChooser.getSelected();
+    //autoChooser.setDefaultOption("Left Auto", leftAuto);
+    System.out.println("Auto selected: " + autoSelected);
+    switch (autoSelected) {
+      case leftAuto:
+        autonomous = new LeftAuto();
+        break;
+      case rightAuto:
+        autonomous = new RightAuto();
+      case middleAuto:
+        autonomous = new MiddleAuto();
+        break;
+      default:
+        break;
+    }
+    if (autonomous != null) {
+      autonomous.start();
+    }
   }
 
   /** This function is called periodically during autonomous. */
   // WRITE AUTONOMOUS CODE HERE
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
+    Scheduler.getInstance().run();
+    /*
+    switch (autoSelected) {
+      case leftAuto:
+        leftAutoCommand.start();
         break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
+      case rightAuto:
+        rightAutoCommand.start();
+      case middleAuto:
+        middleAutoCommand.start();
         break;
-    }
+    }*/
+    /*
+    if (!autonRunning) {
+      switch (autoSelected) {
+        case leftAuto:
+          autonomous = new LeftAuto();
+          break;
+        case rightAuto:
+          autonomous = new RightAuto();
+        case middleAuto:
+          autonomous = new MiddleAuto();
+          break;
+      }
+    } */
   }
 
   /** This function is called periodically during operator control. */
@@ -94,5 +149,8 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+
+
+  }
 }
