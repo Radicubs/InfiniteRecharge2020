@@ -26,10 +26,11 @@ public class OI {
 
 
   public OI() {
+    aButton.whenPressed(new DriveMode());
     topOne.whenPressed(new AutoShoot(1)); // 1 ball
     topTwo.whenPressed(new AutoShoot(2)); // 2 ball
-    topThree.whenPressed(new AutoShoot(3)); 
-    topFour.whenPressed(new AutoShoot(4));
+    topThree.whenPressed(new AutoShoot(3)); // 3 ball
+    topFour.whenPressed(new AutoShoot(4)); // 4 ball
 
   }
 }

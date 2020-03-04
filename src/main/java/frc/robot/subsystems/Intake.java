@@ -34,6 +34,6 @@ public class Intake extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new IntakeBall(0.5));
+    setDefaultCommand(new IntakeBall(0.3));
   }
 }
