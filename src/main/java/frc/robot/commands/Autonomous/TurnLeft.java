@@ -1,20 +1,27 @@
-package frc.robot.commands;
+package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-
-public class IntakeBall extends Command{
+public class TurnLeft extends Command{
   private double speed;
-  
-  public IntakeBall(double speed) {
-    requires(Robot.intake);
+
+  public TurnLeft(double speed) {
+    requires(Robot.driveBase);
     this.speed = speed;
+    //System.out.println("Called");
   }
+
+
+  @Override
+  protected void initialize() {
+
+  } 
 
   @Override
   protected void execute() {
-      Robot.intake.takeIn(speed);
+      Robot.driveBase.drive(speed,speed);
+      //System.out.println("Called");
 
   }
 
@@ -26,6 +33,7 @@ public class IntakeBall extends Command{
 
   @Override
   protected void end() {
+    Robot.driveBase.drive(0,0);
   }
 
   @Override
