@@ -18,13 +18,13 @@ public class AutoShoot extends CommandGroup {
     // TO GET READY FOR SHOOTING BASED
     // ON times[]
     addSequential(new IndexBall(0.5))
-    addSequential(new WaitCommand(times[balls]));
+    addSequential(new WaitCommand(times[balls])); // Inversely proportional constant
     addSequential(new IndexBall(0));
 
     // WE NEED TO CALCULATE THE TIMEOUT FOR X NUM OF BALLS
     addSequential(new RotationAlignment());  
     addSequential(new DistanceAlignment());
-    addSequential(new DynamicShooting(), timeout);
+    addSequential(new DynamicShooting(), balls); // directly proportional constant
   }
 
   public AutoShoot() {
