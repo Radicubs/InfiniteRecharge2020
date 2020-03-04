@@ -6,7 +6,7 @@ public class RobotMap {
   public static final int JOYSTICK = 0;
 
   // BUTTON BOARD
-  public static final int BUTTON_BOARD = 0;
+  public static final int BUTTON_BOARD = 1;
 
   // JOYSTICK AXES
   public static final int LEFT_X_AXIS = 0;

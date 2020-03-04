@@ -5,10 +5,15 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ArcadeDrive extends Command {
+
+  // 0.4 for Slow mode, 1 for fast mode
+  private static double driveMode = 1;
+
   public ArcadeDrive() {
 
     requires(Robot.driveBase);
   }
+
 
   @Override
   protected void initialize() {}
@@ -29,6 +34,9 @@ public class ArcadeDrive extends Command {
     double leftOut = (scaledSpeed - scaledRotation);
     double rightOut = (scaledSpeed + scaledRotation);
 
+    leftOut *= driveMode;
+    rightOut *= driveMode;
+
     // Drive!
     Robot.driveBase.drive(-leftOut, rightOut);
   }
@@ -37,6 +45,14 @@ public class ArcadeDrive extends Command {
   protected boolean isFinished() {
     // Make this return true when this Command no longer needs to run execute()
     return false;
+  }
+
+  public static void changeDriveMode(){
+      if (driveMode == 1.0){
+        driveMode = 0.4;
+      } else {
+        driveMode = 1.0;
+      }
   }
 
   @Override
