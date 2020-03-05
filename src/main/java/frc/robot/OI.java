@@ -19,18 +19,19 @@ public class OI {
   public static Button topTwo = new JoystickButton(buttonBoard, RobotMap.TOP_BUTTON_TWO);
   public static Button topThree = new JoystickButton(buttonBoard, RobotMap.TOP_BUTTON_THREE);
   public static Button topFour = new JoystickButton(buttonBoard, RobotMap.TOP_BUTTON_FOUR);
-  public static Button bottonOne = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_ONE);
-  public static Button bottonTwo = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_TWO);
-  public static Button bottonThree = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_THREE);
-  public static Button bottonFour = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_FOUR);
+  public static Button bottomOne = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_ONE);
+  public static Button bottomTwo = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_TWO);
+  public static Button bottomThree = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_THREE);
+  public static Button bottomFour = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_FOUR);
 
 
   public OI() {
-    aButton.whenPressed(new DriveMode());
+    bottomOne.whenPressed(new DriveMode());
     topOne.whenPressed(new AutoShoot(1)); // 1 ball
     topTwo.whenPressed(new AutoShoot(2)); // 2 ball
     topThree.whenPressed(new AutoShoot(3)); // 3 ball
     topFour.whenPressed(new AutoShoot(4)); // 4 ball
+    //aButton.whileHeld(new held);
 
   }
 }

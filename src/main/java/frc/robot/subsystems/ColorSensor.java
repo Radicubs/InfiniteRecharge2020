@@ -13,9 +13,10 @@ public class ColorSensor extends Subsystem {
 
   I2C.Port i2cPort = I2C.Port.kOnboard;
   ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
+
   private final ColorMatch colorMatcher = new ColorMatch();
-  private final Color yellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113); //Needs Calibration
-  Color detectedColor = colorSensor.getColor();
+  private final Color yellowTarget = ColorMatch.makeColor(0.330, 0.5417, 0.330); //Needs Calibration
+  Color detectedColor;
   ColorMatchResult match;
 
   double redAmount, greenAmount, blueAmount;
@@ -23,12 +24,17 @@ public class ColorSensor extends Subsystem {
   public ColorSensor() {
     i2cPort = I2C.Port.kOnboard;
     colorSensor = new ColorSensorV3(i2cPort);
+    colorMatcher.addColorMatch(yellowTarget);
   }
 
   
   public boolean foundBall() {
+     detectedColor = colorSensor.getColor();
      match = colorMatcher.matchClosestColor(detectedColor);
      System.out.println(match.color == yellowTarget);
+     System.out.println("Red: " + detectedColor.red);
+     System.out.println("Green: " + detectedColor.green);
+     System.out.println("Blue: " + detectedColor.red);
      return match.color == yellowTarget;
   }
 

@@ -44,8 +44,8 @@ public class RobotMap {
   public static final int RIGHT_FOLLOWER_ONE = 5;
 
   // SUBSYSTEM MOTORS
-  public static final int INTAKE_MOTOR = 2;
-  public static final int INDEX_MOTOR = 3;
+  public static final int INTAKE_MOTOR = 8;
+  public static final int INDEX_MOTOR = 2;
   public static final int ELEVATOR_MOTOR_ONE = 3;
   public static final int ELEVATOR_MOTOR_TWO = 3;
   public static final int SHOOTER_MOTOR = 3;

@@ -6,8 +6,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.autonomous.*;
+import frc.robot.commands.*;
 
 public class Index extends Subsystem {
 
@@ -34,6 +34,6 @@ public class Index extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new IntakeBall());
+    setDefaultCommand(new AutomatedBallIndex());
   }
 }

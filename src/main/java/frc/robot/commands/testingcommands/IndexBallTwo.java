@@ -1,29 +1,22 @@
-package frc.robot.commands;
+package frc.robot.commands.testingcommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AutomatedBallIndex extends Command{
 
-  public AutomatedBallIndex() {
-    requires(Robot.colorSensor);
+public class IndexBallTwo extends Command{
+  private double speed;
+  
+  public IndexBallTwo(double speed) {
     requires(Robot.index);
+    this.speed = speed;
   }
-
-  // Time to Run command (use it for distance as well)
 
   @Override
-  protected void initialize() {
-      } 
-
-@Override
   protected void execute() {
-      if(Robot.colorSensor.foundBall()){
-        Robot.index.index(0.4);
-      }else{
-        Robot.index.index(0);
+      Robot.index.index(speed);
+
   }
-}
 
   @Override
   protected boolean isFinished() {
