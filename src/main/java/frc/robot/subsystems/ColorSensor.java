@@ -30,12 +30,7 @@ public class ColorSensor extends Subsystem {
   
   public boolean foundBall() {
      detectedColor = colorSensor.getColor();
-     match = colorMatcher.matchClosestColor(detectedColor);
-     System.out.println(match.color == yellowTarget);
-     System.out.println("Red: " + detectedColor.red);
-     System.out.println("Green: " + detectedColor.green);
-     System.out.println("Blue: " + detectedColor.red);
-     return match.color == yellowTarget;
+     return Math.abs(detectedColor.red - yellowTarget.red) < .05 && Math.abs(detectedColor.green - yellowTarget.green) < .05 && Math.abs(detectedColor.blue - yellowTarget.blue) < .05 ;
   }
 
   @Override
