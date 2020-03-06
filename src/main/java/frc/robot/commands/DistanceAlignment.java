@@ -10,7 +10,7 @@ public class DistanceAlignment extends Command {
   }
 
   // Ideal Distacnce for us to be from the target
-  private double idealDistance = 75; //
+  private double idealDistance = 75; // needs calibration at plano comp
   private boolean distanceFinished = false;
   private double distanceFromTarget;
 

@@ -6,6 +6,7 @@ import frc.robot.Robot;
 
 public class ShootBallAutomatic extends Command{
   private double speed;
+  private static double shootState = 1.0;
   
   public ShootBallAutomatic(double speed) {
     requires(Robot.shooter);
@@ -14,9 +15,18 @@ public class ShootBallAutomatic extends Command{
 
   @Override
   protected void execute() {
+      speed *=shootState;
       Robot.shooter.shoot(speed);
 
   }
+
+  public static void shootOnOff(){
+    if (shootState == 1.0){
+      shootState = 0;
+    } else {
+      shootState = 1.0;
+    }
+}
 
   @Override
   protected boolean isFinished() {

@@ -35,6 +35,6 @@ public class Index extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new AutomatedBallIndex());
+    setDefaultCommand(new AutomatedBallIndex());
   }
 }

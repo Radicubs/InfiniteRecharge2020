@@ -3,9 +3,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.*;
 import frc.robot.commands.automaticcommands.IndexBallAutomatic;
 import frc.robot.commands.automaticcommands.ShootBallAutomatic;
+import frc.robot.commands.autonomous.LeftAuto;
 
 public class OI {
   public static Joystick controller = new Joystick(RobotMap.JOYSTICK);
@@ -26,15 +28,19 @@ public class OI {
   public static Button bottomThree = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_THREE);
   public static Button bottomFour = new JoystickButton(buttonBoard, RobotMap.BOTTOM_BUTTON_FOUR);
 
-
   public OI() {
     aButton.whenPressed(new DriveMode());
     //topOne.whenPressed(new AutoShoot(1)); // 1 ball
     //topTwo.whenPressed(new AutoShoot(2)); // 2 ball
-    topThree.whenPressed(new AutoShoot(3)); // 3 ball
-    topFour.whenPressed(new AutoShoot(4)); // 4 ball
+    //topThree.whenPressed(new AutoShoot(3)); // 3 ball
+    //topFour.whenPressed(new AutoShoot(4)); // 4 ball
     //aButton.whileHeld(new held);
-    topOne.whileHeld(new ShootBallAutomatic(1.0));
-    topTwo.whenPressed(new AutoShoot());
+    //topOne.whileHeld(new ShootBallAutomatic(1.0));
+    topOne.whenPressed(new DistanceAlignment());
+    topTwo.whenPressed(new RotationAlignment());
+    bottomOne.whenPressed(new ShootState());
+    bottomTwo.whileHeld(new ManualIndex());
+    bottomThree.whileHeld(new IntakeState());
+    
   }
 }

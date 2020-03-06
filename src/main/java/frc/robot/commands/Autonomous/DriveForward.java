@@ -20,7 +20,7 @@ public class DriveForward extends Command{
 
   @Override
   protected void execute() {
-      Robot.driveBase.drive(-speed,speed);
+      Robot.driveBase.drive(speed,-speed);
       //System.out.println("Called");
 
   }

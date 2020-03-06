@@ -18,10 +18,11 @@ public class AutomatedBallIndex extends Command{
 
 @Override
   protected void execute() {
-     // if(Robot.colorSensor.foundBall()){
+    //  if(Robot.colorSensor.foundBall()){
       Robot.index.index(0.4);
-      //}else{
-      //Robot.index.index(0);
+//       }else{
+//       Robot.index.index(0);
+// }
 }
 
   @Override

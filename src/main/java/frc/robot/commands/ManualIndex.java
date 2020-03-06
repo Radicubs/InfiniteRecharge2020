@@ -1,13 +1,12 @@
-package frc.robot.commands.autonomous;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DriveBackward extends Command{
-  private double speed;
-  public DriveBackward(double speed) {
-    requires(Robot.driveBase);
-    this.speed = speed;
+public class ManualIndex extends Command{
+
+  public ManualIndex() {
+    requires(Robot.index);
   }
 
   // Time to Run command (use it for distance as well)
@@ -16,10 +15,10 @@ public class DriveBackward extends Command{
   protected void initialize() {
       } 
 
-
+@Override
   protected void execute() {
-      Robot.driveBase.drive(-speed,speed);
-  }
+      Robot.index.index(0.4);
+}
 
   @Override
   protected boolean isFinished() {
@@ -29,13 +28,11 @@ public class DriveBackward extends Command{
 
   @Override
   protected void end() {
-    Robot.driveBase.drive(0,0);
+      Robot.index.index(0);
   }
 
   @Override
   protected void interrupted() {
-    //super.interrupted();
-    System.out.println("Interrupted");
-    end();
-    }
+    super.interrupted();
+  }
 }
