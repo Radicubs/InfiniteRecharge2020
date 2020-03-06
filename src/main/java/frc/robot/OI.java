@@ -40,7 +40,7 @@ public class OI {
     topTwo.whenPressed(new RotationAlignment());
     bottomOne.whenPressed(new ShootState());
     bottomTwo.whileHeld(new ManualIndex());
-    bottomThree.whileHeld(new IntakeState());
+    bottomThree.whenPressed(new IntakeState());
     
   }
 }

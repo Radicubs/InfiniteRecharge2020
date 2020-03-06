@@ -6,6 +6,7 @@ import frc.robot.Robot;
 public class ManualIndex extends Command{
 
   public ManualIndex() {
+    requires(Robot.colorSensor);
     requires(Robot.index);
   }
 
@@ -17,7 +18,11 @@ public class ManualIndex extends Command{
 
 @Override
   protected void execute() {
+    // if(Robot.colorSensor.foundBall()){
       Robot.index.index(0.4);
+      //  }else{
+      //  Robot.index.index(0);
+ //}
 }
 
   @Override
@@ -28,7 +33,7 @@ public class ManualIndex extends Command{
 
   @Override
   protected void end() {
-      Robot.index.index(0);
+    Robot.index.index(0);
   }
 
   @Override

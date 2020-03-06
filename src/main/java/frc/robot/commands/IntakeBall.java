@@ -15,8 +15,8 @@ public class IntakeBall extends Command{
 
   @Override
   protected void execute() {
-      speed *=intakeState;
-      Robot.intake.takeIn(speed);
+      //speed *= intakeState;
+      Robot.intake.takeIn(speed*intakeState);
 
   }
 

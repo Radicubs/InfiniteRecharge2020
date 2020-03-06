@@ -15,6 +15,7 @@ public class Intake extends Subsystem {
 
   // Right Motors
   private VictorSPX intakeMotor;
+  private double speed = 0.3;
 
   
   public Intake() {
@@ -34,6 +35,6 @@ public class Intake extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new IntakeBall(0.3));
+    setDefaultCommand(new IntakeBall(speed));
   }
 }

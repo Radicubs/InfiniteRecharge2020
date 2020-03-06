@@ -15,8 +15,7 @@ public class ShootBallAutomatic extends Command{
 
   @Override
   protected void execute() {
-      speed *=shootState;
-      Robot.shooter.shoot(speed);
+      Robot.shooter.shoot(speed*shootState);
 
   }
 
