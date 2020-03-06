@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
 import frc.robot.commands.autonomous.*;
-import frc.robot.commands.testingcommands.*;
+import frc.robot.commands.automaticcommands.*;
 
 public class Shooter extends Subsystem {
 
@@ -35,6 +35,6 @@ public class Shooter extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new Shoot(0.5));
+    //setDefaultCommand(new ShootBallAutomatic(0.3));
   }
 }

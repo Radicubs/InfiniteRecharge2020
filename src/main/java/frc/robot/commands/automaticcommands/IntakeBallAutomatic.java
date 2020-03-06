@@ -1,20 +1,20 @@
-package frc.robot.commands.testingcommands;
+package frc.robot.commands.automaticcommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 
-public class Shoot extends Command{
+public class IntakeBallAutomatic extends Command{
   private double speed;
   
-  public Shoot(double speed) {
-    requires(Robot.shooter);
+  public IntakeBallAutomatic(double speed) {
+    requires(Robot.intake);
     this.speed = speed;
   }
 
   @Override
   protected void execute() {
-      Robot.shooter.shoot(speed);
+      Robot.intake.takeIn(speed);
 
   }
 

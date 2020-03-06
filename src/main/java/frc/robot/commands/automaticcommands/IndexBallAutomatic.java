@@ -1,13 +1,13 @@
-package frc.robot.commands.testingcommands;
+package frc.robot.commands.automaticcommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 
-public class IndexBallTwo extends Command{
+public class IndexBallAutomatic extends Command{
   private double speed;
   
-  public IndexBallTwo(double speed) {
+  public IndexBallAutomatic(double speed) {
     requires(Robot.index);
     this.speed = speed;
   }

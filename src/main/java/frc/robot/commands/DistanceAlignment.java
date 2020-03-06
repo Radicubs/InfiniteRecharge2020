@@ -41,7 +41,9 @@ public class DistanceAlignment extends Command {
   }
 
   @Override
-  protected void end() {}
+  protected void end() {
+    Robot.driveBase.drive(0,0);
+  }
 
   @Override
   protected void interrupted() {
