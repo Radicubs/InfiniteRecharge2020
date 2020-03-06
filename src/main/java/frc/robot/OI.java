@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.commands.automaticcommands.IndexBallAutomatic;
+import frc.robot.commands.automaticcommands.ShootBallAutomatic;
 
 public class OI {
   public static Joystick controller = new Joystick(RobotMap.JOYSTICK);
@@ -27,11 +29,12 @@ public class OI {
 
   public OI() {
     aButton.whenPressed(new DriveMode());
-    topOne.whenPressed(new AutoShoot(1)); // 1 ball
-    topTwo.whenPressed(new AutoShoot(2)); // 2 ball
+    //topOne.whenPressed(new AutoShoot(1)); // 1 ball
+    //topTwo.whenPressed(new AutoShoot(2)); // 2 ball
     topThree.whenPressed(new AutoShoot(3)); // 3 ball
     topFour.whenPressed(new AutoShoot(4)); // 4 ball
     //aButton.whileHeld(new held);
-
+    topOne.whileHeld(new ShootBallAutomatic(1.0));
+    topTwo.whenPressed(new AutoShoot());
   }
 }

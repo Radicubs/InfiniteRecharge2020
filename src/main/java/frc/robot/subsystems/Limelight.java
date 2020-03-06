@@ -35,7 +35,7 @@ public class Limelight extends Subsystem {
   double skewAmount;
 
   double llAngle = 35; // angle of the limelight in degrees
-  double targetHeight = 90.75 - 56; // height of the target in inches
+  double targetHeight = 90.75 - 40.25; // height of the target in inches
 
   // Check Connection
   boolean limeLightConnected;

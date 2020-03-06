@@ -3,20 +3,22 @@ package frc.robot.commands.automaticcommands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-
 public class IndexBallAutomatic extends Command{
-  private double speed;
-  
-  public IndexBallAutomatic(double speed) {
+
+  public IndexBallAutomatic() {
     requires(Robot.index);
-    this.speed = speed;
   }
+
+  // Time to Run command (use it for distance as well)
 
   @Override
-  protected void execute() {
-      Robot.index.index(speed);
+  protected void initialize() {
+      } 
 
-  }
+@Override
+  protected void execute() {
+      Robot.index.index(0.4);
+}
 
   @Override
   protected boolean isFinished() {
