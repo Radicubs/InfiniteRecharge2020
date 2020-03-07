@@ -10,7 +10,7 @@ public class DistanceAlignment extends Command {
   }
 
   // Ideal Distacnce for us to be from the target
-  private double idealDistance = 75; // needs calibration at plano comp
+  private double idealDistance = 100.5; // needs calibration at plano comp
   private boolean distanceFinished = false;
   private double distanceFromTarget;
 
@@ -29,7 +29,7 @@ public class DistanceAlignment extends Command {
         Robot.driveBase.drive(Math.abs(idealDistance - distanceFromTarget)/100, -1*Math.abs(idealDistance - distanceFromTarget)/100);
 
       }else{
-      Robot.driveBase.drive(0.2, -0.2);
+      Robot.driveBase.drive(0.3, -0.3);
     }
     // If we are too Close, then move back (+3/-3 so that we have an approximate and so our robo doesn't constantly adjust)
     } else if (idealDistance > distanceFromTarget + 10 || idealDistance > distanceFromTarget - 10) {
@@ -37,7 +37,7 @@ public class DistanceAlignment extends Command {
         Robot.driveBase.drive(-1*Math.abs(idealDistance - distanceFromTarget)/100, Math.abs(idealDistance - distanceFromTarget)/100);
 
       }else{
-      Robot.driveBase.drive(-0.2, 0.2);
+      Robot.driveBase.drive(-0.3, 0.3);
     }
     //If we are in the range end the command
     }else if (idealDistance + 10 > distanceFromTarget && idealDistance - 10 < distanceFromTarget){

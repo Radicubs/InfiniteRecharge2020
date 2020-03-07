@@ -38,9 +38,11 @@ public class OI {
     //topOne.whileHeld(new ShootBallAutomatic(1.0));
     topOne.whenPressed(new DistanceAlignment());
     topTwo.whenPressed(new RotationAlignment());
-    bottomOne.whenPressed(new ShootState());
+    bottomThree.whenPressed(new ShootState());
     bottomTwo.whileHeld(new ManualIndex());
-    bottomThree.whenPressed(new IntakeState());
+    bottomOne.whenPressed(new IntakeState());
+    topThree.whileHeld(new Vomit());
+    topFour.whenPressed(new ArcadeDrive());
     
   }
 }

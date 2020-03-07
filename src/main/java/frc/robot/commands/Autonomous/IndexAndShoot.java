@@ -1,12 +1,13 @@
-package frc.robot.commands;
+package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManualIndex extends Command{
+public class IndexAndShoot extends Command{
 
-  public ManualIndex() {
+  public IndexAndShoot() {
     requires(Robot.colorSensor);
+    requires(Robot.shooter);
     requires(Robot.index);
   }
 
@@ -20,6 +21,7 @@ public class ManualIndex extends Command{
   protected void execute() {
     // if(Robot.colorSensor.foundBall()){
       Robot.index.index(1.0);
+      Robot.shooter.shoot(1.0);
       //  }else{
       //  Robot.index.index(0);
  //}
@@ -33,6 +35,7 @@ public class ManualIndex extends Command{
 
   @Override
   protected void end() {
+    Robot.shooter.shoot(0);
     Robot.index.index(0);
   }
 

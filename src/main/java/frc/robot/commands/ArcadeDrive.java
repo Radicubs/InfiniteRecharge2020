@@ -6,8 +6,8 @@ import frc.robot.RobotMap;
 
 public class ArcadeDrive extends Command {
 
-  // 0.4 for Slow mode, 1 for fast mode
-  private static double driveMode = 0.8;
+  // 0.4 for Slow mode, 0.8 for fast mode
+  private static double driveMode = 0.4;
 
   public ArcadeDrive() {
 
@@ -48,10 +48,10 @@ public class ArcadeDrive extends Command {
   }
 
   public static void changeDriveMode(){
-      if (driveMode == 0.8){
-        driveMode = 0.4;
-      } else {
+      if (driveMode == 0.4){
         driveMode = 0.8;
+      } else {
+        driveMode = 0.4;
       }
   }
 

@@ -3,10 +3,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManualIndex extends Command{
+public class Vomit extends Command{
 
-  public ManualIndex() {
+  public Vomit() {
     requires(Robot.colorSensor);
+    requires(Robot.intake);
     requires(Robot.index);
   }
 
@@ -19,7 +20,8 @@ public class ManualIndex extends Command{
 @Override
   protected void execute() {
     // if(Robot.colorSensor.foundBall()){
-      Robot.index.index(1.0);
+      Robot.index.index(-0.5);
+      Robot.intake.takeIn(-0.8);
       //  }else{
       //  Robot.index.index(0);
  //}
@@ -34,6 +36,7 @@ public class ManualIndex extends Command{
   @Override
   protected void end() {
     Robot.index.index(0);
+    Robot.intake.takeIn(0);
   }
 
   @Override

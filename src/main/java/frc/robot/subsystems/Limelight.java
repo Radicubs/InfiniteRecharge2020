@@ -107,6 +107,7 @@ public class Limelight extends Subsystem {
     SmartDashboard.putNumber("Skew Amount", skewAmount);
     SmartDashboard.putString("LED State", ledStateWord);
     SmartDashboard.putNumber("Pipeline", pipelineNumber);
+    SmartDashboard.putNumber("Distance", calculateDistance());
     // SmartDashboard.putString("Camera State", cameraStateWord);
 
     // System.out.println("Horizontal Offset: " + horizonatalOffset);
@@ -115,16 +116,16 @@ public class Limelight extends Subsystem {
     if (checkConnection()) {
       SmartDashboard.putString("Connection", "Connected");
     } else {
-      SmartDashboard.putString("Connection", "Not Connepcted");
+      SmartDashboard.putString("Connection", "Not Connected");
     }
 
     // return tx;
 
     if (debugVal > 200) {
-      System.out.println("Horizontal Offset: " + horizonatalOffset);
-      System.out.println("Vertical Offset: " + verticalOffset);
-      System.out.println("Target Area: " + targetArea);
-      System.out.println("Skew Area: " + skewAmount);
+      // System.out.println("Horizontal Offset: " + horizonatalOffset);
+      // System.out.println("Vertical Offset: " + verticalOffset);
+      // System.out.println("Target Area: " + targetArea);
+      // System.out.println("Skew Area: " + skewAmount);
       System.out.println("Distance: " + calculateDistance());
       System.out.println("===========================");
       System.out.println();
