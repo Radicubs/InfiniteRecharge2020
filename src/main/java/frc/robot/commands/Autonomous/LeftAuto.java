@@ -13,12 +13,12 @@ public class LeftAuto extends CommandGroup {
   
     requires(Robot.driveBase);
     addSequential(new DriveForward(0.3), 1.5);  
-    addSequential(new TurnLeft(0.3), .4667); // perfect right angle
-    addSequential(new DriveForward(0.5), 1.7);
-    addSequential(new TurnLeft(0.3), .4667);
-    addSequential(new DistanceAlignment(), 3);
-    addSequential(new RotationAlignment(), 2);
-    addSequential(new IndexAndShoot(),4);
+    // addSequential(new TurnLeft(0.3), .4667); // perfect right angle
+    // addSequential(new DriveForward(0.5), 1.7);
+    // addSequential(new TurnLeft(0.3), .4667);
+    // addSequential(new DistanceAlignment(), 3);
+    // addSequential(new RotationAlignment(), 2);
+    // addSequential(new IndexAndShoot(),4);
 
   }
 }

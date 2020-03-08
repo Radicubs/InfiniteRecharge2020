@@ -1,12 +1,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 
 public class IntakeBall extends Command{
   private double speed;
   private static double intakeState = 1.0;
+  private static String dashboardState = "ON";
+
   
   public IntakeBall(double speed) {
     requires(Robot.intake);
@@ -17,6 +20,7 @@ public class IntakeBall extends Command{
   protected void execute() {
       //speed *= intakeState;
       Robot.intake.takeIn(speed*intakeState);
+      SmartDashboard.putString("Intake State", dashboardState);
 
   }
 
@@ -28,8 +32,10 @@ public class IntakeBall extends Command{
   public static void intakeOnOff(){
     if (intakeState == 1.0){
       intakeState = 0;
+      dashboardState = "OFF";
     } else {
       intakeState = 1.0;
+      dashboardState = "ON";
     }
 }
   @Override
