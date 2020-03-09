@@ -7,7 +7,7 @@ import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.Color;
-import frc.robot.commands.AutomatedBallIndex;
+import frc.robot.commands.defaultcommands.AutomatedBallIndex;
 
 public class ColorSensor extends Subsystem {
 

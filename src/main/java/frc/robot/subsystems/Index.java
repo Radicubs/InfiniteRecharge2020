@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.autonomous.*;
 import frc.robot.commands.*;
-import frc.robot.commands.automaticcommands.IndexBallAutomatic;
+import frc.robot.commands.defaultcommands.*;
 
 public class Index extends Subsystem {
 

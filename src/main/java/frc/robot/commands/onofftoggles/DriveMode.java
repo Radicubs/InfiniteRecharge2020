@@ -1,13 +1,10 @@
-package frc.robot.commands;
+package frc.robot.commands.onofftoggles;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.commands.defaultcommands.*;
 import frc.robot.Robot;
 
 public class DriveMode extends InstantCommand {
-  public DriveMode() {
-      
-  }
-
   @Override
   protected void initialize() {    
     ArcadeDrive.changeDriveMode();

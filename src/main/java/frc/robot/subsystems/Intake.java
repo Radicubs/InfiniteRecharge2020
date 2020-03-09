@@ -6,7 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.defaultcommands.RunIntake;
 import frc.robot.commands.*;
 
 public class Intake extends Subsystem {
@@ -35,6 +35,6 @@ public class Intake extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new IntakeBall(speed));
+    setDefaultCommand(new RunIntake(speed));
   }
 }

@@ -1,16 +1,16 @@
-package frc.robot.commands.automaticcommands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 
-public class ShootBallAutomatic extends Command{
+public class ManualShoot extends Command{
   private double speed;
   private static double shootState = 1.0;
   private static String dashboardState = "OFF";
   
-  public ShootBallAutomatic(double speed) {
+  public ManualShoot(double speed) {
     requires(Robot.shooter);
     this.speed = speed;
   }
@@ -19,7 +19,6 @@ public class ShootBallAutomatic extends Command{
   protected void execute() {
       Robot.shooter.shoot(speed*shootState);
       SmartDashboard.putString("Shooter State", dashboardState);
-
   }
 
   public static void shootOnOff(){

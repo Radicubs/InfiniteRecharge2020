@@ -1,17 +1,17 @@
-package frc.robot.commands;
+package frc.robot.commands.defaultcommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 
-public class IntakeBall extends Command{
+public class RunIntake extends Command{
   private double speed;
   private static double intakeState = 1.0;
   private static String dashboardState = "ON";
 
   
-  public IntakeBall(double speed) {
+  public RunIntake(double speed) {
     requires(Robot.intake);
     this.speed = speed;
   }

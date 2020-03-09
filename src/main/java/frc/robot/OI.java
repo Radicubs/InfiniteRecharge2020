@@ -5,9 +5,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.*;
-import frc.robot.commands.automaticcommands.IndexBallAutomatic;
-import frc.robot.commands.automaticcommands.ShootBallAutomatic;
-import frc.robot.commands.autonomous.LeftAuto;
+import frc.robot.commands.defaultcommands.*;
+import frc.robot.commands.onofftoggles.*;
 
 public class OI {
   public static Joystick controller = new Joystick(RobotMap.JOYSTICK);
@@ -38,7 +37,7 @@ public class OI {
     //topOne.whileHeld(new ShootBallAutomatic(1.0));
     topOne.whenPressed(new DistanceAlignment());
     topTwo.whenPressed(new RotationAlignment());
-    bottomThree.whileHeld(new ShootBallAutomatic(-1.0));
+    bottomThree.whileHeld(new ManualShoot(-1.0));
     bottomTwo.whileHeld(new ManualIndex());
     bottomOne.whenPressed(new IntakeState());
     topThree.whileHeld(new Vomit());
