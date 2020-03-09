@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
+import edu.wpi.first.cameraserver.CameraServer;
+
 
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
@@ -61,6 +63,7 @@ public class Robot extends TimedRobot {
     intake = new Intake();
     shooter = new Shooter();
     elevator = new Elevator();
+    CameraServer.getInstance().startAutomaticCapture();
 
     //Initialize OI Last
     oi = new OI();
