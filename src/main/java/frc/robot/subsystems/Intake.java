@@ -15,7 +15,7 @@ public class Intake extends Subsystem {
 
   // Right Motors
   private VictorSPX intakeMotor;
-  private double speed = 0.3;
+  private double speed = 0.275;
 
   
   public Intake() {

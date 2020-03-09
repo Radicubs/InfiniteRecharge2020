@@ -14,7 +14,7 @@ public class RightAuto extends CommandGroup {
   public RightAuto() {
 
     addSequential(new DistanceAlignment(), 2);
-    addSequential(new RotationAlignment(), 5);
+    addSequential(new RotationAlignment(), 3);
     addSequential(new IndexAndShoot(), 4);
 
 

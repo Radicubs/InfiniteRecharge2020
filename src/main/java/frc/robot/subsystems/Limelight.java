@@ -125,10 +125,10 @@ public class Limelight extends Subsystem {
       // System.out.println("Horizontal Offset: " + horizonatalOffset);
       // System.out.println("Vertical Offset: " + verticalOffset);
       // System.out.println("Target Area: " + targetArea);
-      // System.out.println("Skew Area: " + skewAmount);
-      System.out.println("Distance: " + calculateDistance());
-      System.out.println("===========================");
-      System.out.println();
+      // // System.out.println("Skew Area: " + skewAmount);
+      // System.out.println("Distance: " + calculateDistance());
+      // System.out.println("===========================");
+      // System.out.println();
       debugVal = 0;
     }
     debugVal++;

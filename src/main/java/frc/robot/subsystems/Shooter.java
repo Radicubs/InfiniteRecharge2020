@@ -35,6 +35,6 @@ public class Shooter extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ShootBallAutomatic(-1.0));
+    //setDefaultCommand(new ShootBallAutomatic(-1.0));
   }
 }

@@ -22,17 +22,17 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String leftAuto = "Left Auto";
-  private static final String rightAuto = "Right Auto";
-  private static final String middleAuto = "Middle Auto";
+  // private static final String leftAuto = "Left Auto";
+  // private static final String rightAuto = "Right Auto";
+  // private static final String middleAuto = "Middle Auto";
 
-  // Autonomous Declarations
-  private String autoSelected;
-  private SendableChooser<String> autoChooser = new SendableChooser<>();
+  // // Autonomous Declarations
+  // private String autoSelected;
+  // private SendableChooser<String> autoChooser = new SendableChooser<>();
 
 
-  Command autonomous;
-
+  //Command autonomous;
+  private MiddleAuto middleAuto;
   // Declare subsystems
   public static DriveBase driveBase;
   public static Limelight limeLight;
@@ -45,12 +45,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    autoChooser.addOption("Right Auto", rightAuto);
-    autoChooser.addOption("Middle Auto", middleAuto);
-    autoChooser.addOption("Left Auto", leftAuto);
-    autoChooser.setDefaultOption("Default Auto", new String("Default Auto"));
+    // autoChooser.addOption("Right Auto", rightAuto);
+    // autoChooser.addOption("Middle Auto", middleAuto);
+    // autoChooser.addOption("Left Auto", leftAuto);
+    // autoChooser.setDefaultOption("Default Auto", new String("Default Auto"));
 
-    SmartDashboard.putData("Auto choices", autoChooser);
+    // SmartDashboard.putData("Auto choices", autoChooser);
     SmartDashboard.updateValues();
     // Initialize subsystems
     limeLight = new Limelight();
@@ -65,7 +65,7 @@ public class Robot extends TimedRobot {
     //Initialize OI Last
     oi = new OI();
 
-    
+    middleAuto = new MiddleAuto();
   }
 
   /**
@@ -77,7 +77,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
+    Scheduler.getInstance().run();
   }
 
   /**
@@ -92,7 +92,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    autoSelected = (String) autoChooser.getSelected();
+    /*autoSelected = (String) autoChooser.getSelected();
     //autoChooser.setDefaultOption("Left Auto", leftAuto);
     System.out.println("Auto selected: " + autoSelected);
     switch (autoSelected) {
@@ -110,14 +110,15 @@ public class Robot extends TimedRobot {
     }
     if (autonomous != null) {
       autonomous.start();
-    }
+    }*/
+    middleAuto.start();
   }
 
   /** This function is called periodically during autonomous. */
   // WRITE AUTONOMOUS CODE HERE
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    
     /*
     switch (autoSelected) {
       case leftAuto:
@@ -147,7 +148,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run(); // <--- VERY IMPORTANT DON'T REMOVE
+    //Scheduler.getInstance().run(); // <--- VERY IMPORTANT DON'T REMOVE
   }
 
   /** This function is called periodically during test mode. */
