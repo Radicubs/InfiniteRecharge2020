@@ -7,15 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
-import edu.wpi.first.cameraserver.CameraServer;
-
 
 /**
  * The VM is configuRobotd to automatically run this class, and to call the functions corresponding
@@ -32,8 +29,7 @@ public class Robot extends TimedRobot {
   // private String autoSelected;
   // private SendableChooser<String> autoChooser = new SendableChooser<>();
 
-
-  //Command autonomous;
+  // Command autonomous;
   private MiddleAuto middleAuto;
   // Declare subsystems
   public static DriveBase driveBase;
@@ -65,7 +61,7 @@ public class Robot extends TimedRobot {
     elevator = new Elevator();
     CameraServer.getInstance().startAutomaticCapture();
 
-    //Initialize OI Last
+    // Initialize OI Last
     oi = new OI();
 
     middleAuto = new MiddleAuto();
@@ -121,7 +117,7 @@ public class Robot extends TimedRobot {
   // WRITE AUTONOMOUS CODE HERE
   @Override
   public void autonomousPeriodic() {
-    
+
     /*
     switch (autoSelected) {
       case leftAuto:
@@ -151,13 +147,10 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    //Scheduler.getInstance().run(); // <--- VERY IMPORTANT DON'T REMOVE
+    // Scheduler.getInstance().run(); // <--- VERY IMPORTANT DON'T REMOVE
   }
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {
-
-
-  }
+  public void testPeriodic() {}
 }

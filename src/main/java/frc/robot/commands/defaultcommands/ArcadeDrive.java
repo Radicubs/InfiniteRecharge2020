@@ -14,7 +14,6 @@ public class ArcadeDrive extends Command {
     requires(Robot.driveBase);
   }
 
-
   @Override
   protected void initialize() {}
 
@@ -47,12 +46,12 @@ public class ArcadeDrive extends Command {
     return false;
   }
 
-  public static void changeDriveMode(){
-      if (driveMode == 0.4){
-        driveMode = 0.8;
-      } else {
-        driveMode = 0.4;
-      }
+  public static void changeDriveMode() {
+    if (driveMode == 0.4) {
+      driveMode = 0.8;
+    } else {
+      driveMode = 0.4;
+    }
   }
 
   @Override

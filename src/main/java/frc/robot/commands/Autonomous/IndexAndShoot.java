@@ -3,7 +3,7 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IndexAndShoot extends Command{
+public class IndexAndShoot extends Command {
 
   public IndexAndShoot() {
     requires(Robot.colorSensor);
@@ -14,18 +14,17 @@ public class IndexAndShoot extends Command{
   // Time to Run command (use it for distance as well)
 
   @Override
-  protected void initialize() {
-      } 
+  protected void initialize() {}
 
-@Override
+  @Override
   protected void execute() {
     // if(Robot.colorSensor.foundBall()){
-      Robot.index.index(0.7);
-     Robot.shooter.shoot(-1.0);
-      //  }else{
-      //  Robot.index.index(0);
- //}
-}
+    Robot.index.index(0.7);
+    Robot.shooter.shoot(-1.0);
+    //  }else{
+    //  Robot.index.index(0);
+    // }
+  }
 
   @Override
   protected boolean isFinished() {

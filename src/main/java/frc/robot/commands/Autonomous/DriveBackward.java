@@ -3,8 +3,9 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DriveBackward extends Command{
+public class DriveBackward extends Command {
   private double speed;
+
   public DriveBackward(double speed) {
     requires(Robot.driveBase);
     this.speed = speed;
@@ -13,12 +14,10 @@ public class DriveBackward extends Command{
   // Time to Run command (use it for distance as well)
 
   @Override
-  protected void initialize() {
-      } 
-
+  protected void initialize() {}
 
   protected void execute() {
-      Robot.driveBase.drive(-speed,speed);
+    Robot.driveBase.drive(-speed, speed);
   }
 
   @Override
@@ -29,13 +28,13 @@ public class DriveBackward extends Command{
 
   @Override
   protected void end() {
-    Robot.driveBase.drive(0,0);
+    Robot.driveBase.drive(0, 0);
   }
 
   @Override
   protected void interrupted() {
-    //super.interrupted();
+    // super.interrupted();
     System.out.println("Interrupted");
     end();
-    }
+  }
 }

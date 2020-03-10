@@ -2,12 +2,11 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.autonomous.*;
 import frc.robot.commands.*;
+import frc.robot.commands.autonomous.*;
 import frc.robot.commands.defaultcommands.*;
 
 public class Index extends Subsystem {
@@ -17,7 +16,6 @@ public class Index extends Subsystem {
   // Right Motors
   private VictorSPX indexMotor;
 
-  
   public Index() {
 
     // constructor
@@ -26,7 +24,6 @@ public class Index extends Subsystem {
     // Set Motors to default and neutral
     indexMotor.configFactoryDefault();
     indexMotor.setNeutralMode(NeutralMode.Brake);
-
   }
 
   public void index(double speed) {

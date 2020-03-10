@@ -3,7 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManualIndex extends Command{
+public class ManualIndex extends Command {
 
   public ManualIndex() {
     requires(Robot.colorSensor);
@@ -13,17 +13,16 @@ public class ManualIndex extends Command{
   // Time to Run command (use it for distance as well)
 
   @Override
-  protected void initialize() {
-      } 
+  protected void initialize() {}
 
-@Override
+  @Override
   protected void execute() {
     // if(Robot.colorSensor.foundBall()){
-      Robot.index.index(1.0);
-      //  }else{
-      //  Robot.index.index(0);
- //}
-}
+    Robot.index.index(1.0);
+    //  }else{
+    //  Robot.index.index(0);
+    // }
+  }
 
   @Override
   protected boolean isFinished() {

@@ -3,9 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
-public class IndexBall extends InstantCommand{
+public class IndexBall extends InstantCommand {
   private double speed;
-  
+
   public IndexBall(double speed) {
     requires(Robot.index);
     this.speed = speed;
@@ -15,6 +15,6 @@ public class IndexBall extends InstantCommand{
 
   @Override
   protected void initialize() {
-        Robot.index.index(this.speed);
-      } 
+    Robot.index.index(this.speed);
+  }
 }

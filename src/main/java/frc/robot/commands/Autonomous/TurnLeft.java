@@ -3,25 +3,22 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TurnLeft extends Command{
+public class TurnLeft extends Command {
   private double speed;
 
   public TurnLeft(double speed) {
     requires(Robot.driveBase);
     this.speed = speed;
-    //System.out.println("Called");
+    // System.out.println("Called");
   }
 
-
   @Override
-  protected void initialize() {
-
-  } 
+  protected void initialize() {}
 
   @Override
   protected void execute() {
-      Robot.driveBase.drive(-speed,-speed);
-      //System.out.println("Called");
+    Robot.driveBase.drive(-speed, -speed);
+    // System.out.println("Called");
 
   }
 
@@ -33,7 +30,7 @@ public class TurnLeft extends Command{
 
   @Override
   protected void end() {
-    Robot.driveBase.drive(0,0);
+    Robot.driveBase.drive(0, 0);
   }
 
   @Override

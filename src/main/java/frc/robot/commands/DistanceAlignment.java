@@ -23,24 +23,30 @@ public class DistanceAlignment extends Command {
     // Get distance from the target
     distanceFromTarget = Robot.limeLight.calculateDistance();
 
-    // If we are too far, then go closer (+3/-3 so that we have an approximate and so our robo doesn't constantly adjust)
+    // If we are too far, then go closer (+3/-3 so that we have an approximate and so our robo
+    // doesn't constantly adjust)
     if (idealDistance < distanceFromTarget + 10 || idealDistance < distanceFromTarget - 10) {
-      if(Math.abs(idealDistance - distanceFromTarget) < 20){
-        Robot.driveBase.drive(Math.abs(idealDistance - distanceFromTarget)/100, -1*Math.abs(idealDistance - distanceFromTarget)/100);
+      if (Math.abs(idealDistance - distanceFromTarget) < 20) {
+        Robot.driveBase.drive(
+            Math.abs(idealDistance - distanceFromTarget) / 100,
+            -1 * Math.abs(idealDistance - distanceFromTarget) / 100);
 
-      }else{
-      Robot.driveBase.drive(0.3, -0.3);
-    }
-    // If we are too Close, then move back (+3/-3 so that we have an approximate and so our robo doesn't constantly adjust)
+      } else {
+        Robot.driveBase.drive(0.3, -0.3);
+      }
+      // If we are too Close, then move back (+3/-3 so that we have an approximate and so our robo
+      // doesn't constantly adjust)
     } else if (idealDistance > distanceFromTarget + 10 || idealDistance > distanceFromTarget - 10) {
-      if(Math.abs(idealDistance - distanceFromTarget) < 20){
-        Robot.driveBase.drive(-1*Math.abs(idealDistance - distanceFromTarget)/100, Math.abs(idealDistance - distanceFromTarget)/100);
+      if (Math.abs(idealDistance - distanceFromTarget) < 20) {
+        Robot.driveBase.drive(
+            -1 * Math.abs(idealDistance - distanceFromTarget) / 100,
+            Math.abs(idealDistance - distanceFromTarget) / 100);
 
-      }else{
-      Robot.driveBase.drive(-0.3, 0.3);
-    }
-    //If we are in the range end the command
-    }else if (idealDistance + 10 > distanceFromTarget && idealDistance - 10 < distanceFromTarget){
+      } else {
+        Robot.driveBase.drive(-0.3, 0.3);
+      }
+      // If we are in the range end the command
+    } else if (idealDistance + 10 > distanceFromTarget && idealDistance - 10 < distanceFromTarget) {
       distanceFinished = true;
     }
   }
@@ -52,7 +58,7 @@ public class DistanceAlignment extends Command {
 
   @Override
   protected void end() {
-    Robot.driveBase.drive(0,0);
+    Robot.driveBase.drive(0, 0);
   }
 
   @Override

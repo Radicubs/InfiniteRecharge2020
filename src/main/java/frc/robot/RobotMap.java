@@ -49,5 +49,4 @@ public class RobotMap {
   public static final int ELEVATOR_MOTOR_ONE = 3;
   public static final int ELEVATOR_MOTOR_TWO = 3;
   public static final int SHOOTER_MOTOR = 3;
-
 }

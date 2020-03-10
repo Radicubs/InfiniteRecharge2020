@@ -2,7 +2,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -16,7 +15,6 @@ public class Shooter extends Subsystem {
   // Right Motors
   private VictorSPX shooterMotor;
 
-  
   public Shooter() {
 
     // constructor
@@ -25,7 +23,6 @@ public class Shooter extends Subsystem {
     // Set Motors to default and neutral
     shooterMotor.configFactoryDefault();
     shooterMotor.setNeutralMode(NeutralMode.Brake);
-
   }
 
   public void shoot(double speed) {
@@ -34,6 +31,6 @@ public class Shooter extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new ShootBallAutomatic(-1.0));
+    // setDefaultCommand(new ShootBallAutomatic(-1.0));
   }
 }

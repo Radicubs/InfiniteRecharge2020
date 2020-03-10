@@ -1,18 +1,14 @@
 package frc.robot.commands.onofftoggles;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import frc.robot.Robot;
 import frc.robot.commands.*;
 import frc.robot.commands.defaultcommands.RunIntake;
 
 public class IntakeState extends InstantCommand {
-  public IntakeState() {
-      
-  }
+  public IntakeState() {}
 
   @Override
-  protected void initialize() {    
+  protected void initialize() {
     RunIntake.intakeOnOff();
-} 
-
   }
+}
