@@ -6,8 +6,6 @@ import frc.robot.Robot;
 public class InitiationAuto extends CommandGroup {
   public InitiationAuto() {
     requires(Robot.driveBase);
-
-    requires(Robot.driveBase);
     addSequential(new DriveBackward(0.4), 3);
   }
 }
