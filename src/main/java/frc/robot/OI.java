@@ -34,12 +34,13 @@ public class OI {
     // topFour.whenPressed(new AutoShoot(4)); // 4 ball
     // aButton.whileHeld(new held);
     // topOne.whileHeld(new ShootBallAutomatic(1.0));
-    topOne.whenPressed(new DistanceAlignment());
-    topTwo.whenPressed(new RotationAlignment());
+    topOne.whenPressed(new ManualAlign());
+    topTwo.whenPressed(new Vomit()); 
+    bottomFour.whileHeld( ); // CLIMB
     bottomThree.whileHeld(new ManualShoot(-1.0));
     bottomTwo.whileHeld(new ManualIndex());
     bottomOne.whenPressed(new IntakeState());
-    topThree.whileHeld(new Vomit());
-    topFour.whenPressed(new ArcadeDrive());
+    topThree.whileHeld(new ArcadeDrive());
+    topFour.whenPressed( ); // CLIMB
   }
 }
