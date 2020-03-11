@@ -24,13 +24,12 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
   private static final String shootingAuto = "Shooting Auto";
-  private static final String initiationAuto = "Initiation Auto";
+  private static final String initiationAuto = "Just Initiation Auto";
 
   // Autonomous Declarations
   private String autoSelected;
   private SendableChooser<String> autoChooser = new SendableChooser<>();
   Command autonomous;
-
 
   // Declare subsystems
   public static DriveBase driveBase;
@@ -63,7 +62,7 @@ public class Robot extends TimedRobot {
     // Initialize OI Last
     oi = new OI();
 
-    //shoootingAuto = new ShootingAuto();
+    // shoootingAuto = new ShootingAuto();
   }
 
   /**
@@ -105,7 +104,7 @@ public class Robot extends TimedRobot {
     if (autonomous != null) {
       autonomous.start();
     }
-    //middleAuto.start();
+    // middleAuto.start();
   }
 
   /** This function is called periodically during autonomous. */

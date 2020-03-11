@@ -9,6 +9,5 @@ public class InitiationAuto extends CommandGroup {
 
     requires(Robot.driveBase);
     addSequential(new DriveBackward(0.4), 3);
-
   }
 }
