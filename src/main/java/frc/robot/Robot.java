@@ -9,7 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.autonomous.*;
 import frc.robot.subsystems.*;
@@ -21,16 +23,15 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  // private static final String leftAuto = "Left Auto";
-  // private static final String rightAuto = "Right Auto";
-  // private static final String middleAuto = "Middle Auto";
+  private static final String shootingAuto = "Shooting Auto";
+  private static final String initiationAuto = "Initiation Auto";
 
-  // // Autonomous Declarations
-  // private String autoSelected;
-  // private SendableChooser<String> autoChooser = new SendableChooser<>();
+  // Autonomous Declarations
+  private String autoSelected;
+  private SendableChooser<String> autoChooser = new SendableChooser<>();
+  Command autonomous;
 
-  // Command autonomous;
-  private MiddleAuto middleAuto;
+
   // Declare subsystems
   public static DriveBase driveBase;
   public static Limelight limeLight;
@@ -43,13 +44,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    // autoChooser.addOption("Right Auto", rightAuto);
-    // autoChooser.addOption("Middle Auto", middleAuto);
-    // autoChooser.addOption("Left Auto", leftAuto);
-    // autoChooser.setDefaultOption("Default Auto", new String("Default Auto"));
-
-    // SmartDashboard.putData("Auto choices", autoChooser);
+    autoChooser.setDefaultOption("Shooting Auto", shootingAuto);
+    autoChooser.addOption("Initiation Auto", initiationAuto);
+    SmartDashboard.putData("Auto choices", autoChooser);
     SmartDashboard.updateValues();
+
     // Initialize subsystems
     limeLight = new Limelight();
 
@@ -64,7 +63,7 @@ public class Robot extends TimedRobot {
     // Initialize OI Last
     oi = new OI();
 
-    middleAuto = new MiddleAuto();
+    //shoootingAuto = new ShootingAuto();
   }
 
   /**
@@ -91,26 +90,22 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    /*autoSelected = (String) autoChooser.getSelected();
-    //autoChooser.setDefaultOption("Left Auto", leftAuto);
+    autoSelected = (String) autoChooser.getSelected();
     System.out.println("Auto selected: " + autoSelected);
     switch (autoSelected) {
-      case leftAuto:
-        autonomous = new LeftAuto();
+      case shootingAuto:
+        autonomous = new ShootingAuto();
         break;
-      case rightAuto:
-        autonomous = new RightAuto();
-        break;
-      case middleAuto:
-        autonomous = new MiddleAuto();
+      case initiationAuto:
+        autonomous = new InitiationAuto();
         break;
       default:
         break;
     }
     if (autonomous != null) {
       autonomous.start();
-    }*/
-    middleAuto.start();
+    }
+    //middleAuto.start();
   }
 
   /** This function is called periodically during autonomous. */
