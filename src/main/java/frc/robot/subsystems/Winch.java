@@ -6,32 +6,31 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.autonomous.*;
-import frc.robot.commands.defaultcommands.*;
 
-public class Elevator extends Subsystem {
+public class Winch extends Subsystem {
 
   // Have to initialize motors here
 
   // Right Motors
-  private VictorSPX elevatorMotorOne;
+  private VictorSPX winch;
 
-  public Elevator() {
+  public Winch() {
 
     // constructor
-    elevatorMotorOne = new VictorSPX(RobotMap.ELEVATOR_MOTOR_ONE);
+    winch = new VictorSPX(RobotMap.ELEVATOR_MOTOR_TWO);
 
     // Set Motors to default and neutral
-    elevatorMotorOne.configFactoryDefault();
-    elevatorMotorOne.setNeutralMode(NeutralMode.Brake);
+    winch.configFactoryDefault();
+    winch.setNeutralMode(NeutralMode.Brake);
   }
 
-  public void elevatorRise(double speed) {
-    elevatorMotorOne.set(ControlMode.PercentOutput, speed);
+  public void winchRise(double speed) {
+    winch.set(ControlMode.PercentOutput, speed);
     //    elevatorMotorTwo.set(ControlMode.PercentOutput, speed); // Work with mech
   }
   
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ClimberControl());
+    //    setDefaultCommand(new WinchControl());
   }
 }

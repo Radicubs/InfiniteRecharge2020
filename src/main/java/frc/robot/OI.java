@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
@@ -16,6 +17,10 @@ public class OI {
   public static Button leftBottomButton = new JoystickButton(controller, RobotMap.LB_BUTTON);
   public static Button rightBottomButton = new JoystickButton(controller, RobotMap.RB_BUTTON);
 
+
+  public static Joystick LT = new Joystick(RobotMap.LT_AXIS);
+  public static Joystick RT = new Joystick(RobotMap.RT_AXIS);
+  
   public static Joystick buttonBoard = new Joystick(RobotMap.BUTTON_BOARD);
   public static Button topOne = new JoystickButton(buttonBoard, RobotMap.TOP_BUTTON_ONE);
   public static Button topTwo = new JoystickButton(buttonBoard, RobotMap.TOP_BUTTON_TWO);
@@ -28,19 +33,13 @@ public class OI {
 
   public OI() {
     aButton.whenPressed(new DriveMode());
-    // topOne.whenPressed(new AutoShoot(1)); // 1 ball
-    // topTwo.whenPressed(new AutoShoot(2)); // 2 ball
-    // topThree.whenPressed(new AutoShoot(3)); // 3 ball
-    // topFour.whenPressed(new AutoShoot(4)); // 4 ball
-    // aButton.whileHeld(new held);
-    // topOne.whileHeld(new ShootBallAutomatic(1.0));
     topOne.whenPressed(new ManualAlign());
-    topTwo.whenPressed(new Vomit()); 
-    bottomFour.whileHeld( ); // CLIMB
+    topTwo.whenPressed(new Vomit());
+    //    bottomFour.whileHeld( ); // CLIMB
     bottomThree.whileHeld(new ManualShoot(-1.0));
     bottomTwo.whileHeld(new ManualIndex());
     bottomOne.whenPressed(new IntakeState());
     topThree.whileHeld(new ArcadeDrive());
-    topFour.whenPressed( ); // CLIMB
+    topFour.whileHeld(new WinchControl()); // CLIMB
   }
 }

@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
   public static Intake intake;
   public static Shooter shooter;
   public static Elevator elevator;
+  public static Winch winch;
   public static OI oi;
 
   @Override
@@ -57,6 +58,7 @@ public class Robot extends TimedRobot {
     intake = new Intake();
     shooter = new Shooter();
     elevator = new Elevator();
+    winch = new Winch();
     CameraServer.getInstance().startAutomaticCapture();
 
     // Initialize OI Last
@@ -142,9 +144,14 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     // Scheduler.getInstance().run(); // <--- VERY IMPORTANT DON'T REMOVE
-  }
+ }
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+      double rt = Robot.oi.controller.getRawAxis(RobotMap.RT_AXIS);
+    double lt = Robot.oi.controller.getRawAxis(RobotMap.LT_AXIS);
+    System.out.println(rt);
+    System.out.println(lt);
+  }
 }
