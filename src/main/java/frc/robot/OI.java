@@ -34,12 +34,12 @@ public class OI {
   public OI() {
     aButton.whenPressed(new DriveMode());
     topOne.whenPressed(new ManualAlign());
-    topTwo.whenPressed(new Vomit());
+    topTwo.whileHeld(new Vomit());
     //    bottomFour.whileHeld( ); // CLIMB
     bottomThree.whileHeld(new ManualShoot(-1.0));
     bottomTwo.whileHeld(new ManualIndex());
     bottomOne.whenPressed(new IntakeState());
-    topThree.whileHeld(new ArcadeDrive());
+    topThree.whenPressed(new ArcadeDrive());
     topFour.whileHeld(new WinchControl()); // CLIMB
   }
 }
